@@ -36,7 +36,7 @@ To run this project:
 # clone to your local machine
 cd patch
 npm install
-npm run db:reset # will run migrations and seeds
+npm run db:reset:dev # will run migrations and seeds
 npm run dev
 
 # you can find the server running on http://localhost:3000
