@@ -3,7 +3,7 @@ import { useState } from 'react'
 import MainLayout from './components/Layout/MainLayout'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(1)
   return (
     <MainLayout>
       <div className='mt-4'>
