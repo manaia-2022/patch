@@ -5,7 +5,7 @@ import * as db from '../db/functions/randomPets.db.js'
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  db.getRandomPets() //need to write this in db.js
+  db.getRandomPets()
     .then((randomPet) => {
       res.json(randomPet)
     })
@@ -13,9 +13,6 @@ router.get('/', (req, res) => {
       console.log(err.message)
       res.status(500).send('Server Error')
     })
-
-  // res.sendStatus(200)
-  // console.log('hello')
 })
 
 export default router
