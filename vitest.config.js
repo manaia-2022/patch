@@ -1,5 +1,10 @@
-// vitest doesn't like .cjs so
-// export things from here instead
-import config from './vite.config.cjs'
+import { defineConfig } from 'vitest/config'
 
-export default config
+export default defineConfig({
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './test/setup.js',
+    clearMocks: true,
+  },
+})

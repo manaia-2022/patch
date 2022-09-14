@@ -8,9 +8,4 @@ const { defineConfig } = require('vite')
 // https://vitejs.dev/config/
 module.exports = defineConfig({
   plugins: [react()],
-  test: {
-    environment: 'jsdom',
-    globals: true,
-    setupFiles: './test/setup.js',
-  },
 })
