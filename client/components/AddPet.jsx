@@ -14,6 +14,8 @@
 
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+
+import { addNewPet } from '../redux/actions'
 //import { } from '../redux/actions/index' //Import actions from index
 
 const initialData = {
@@ -35,50 +37,63 @@ export default function AddPet() {
   }
 
   function handleSubmit(e) {
-    console.log(e)
+    e.preventDefault()
+    console.log('Form: ', form)
+    dispatch(addNewPet(form))
   }
 
   return (
     <div>
-      <h3>Add a Pet</h3>
+      <h3 className='text-center'>Add a Pet</h3>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor='name'> Name </label>
+          <label htmlFor='name'> </label>
           <input
             type='text'
             name='name'
             value={form.name}
             placeholder='Name'
             onChange={handleChange}
+            className='border-black-300 bg-white-300 shadow-black-100 rounded-md border-2 text-center shadow-md'
           />
         </div>
         <div>
-          <label htmlFor='age'> Age </label>
+          <label htmlFor='age'> </label>
           <input
             type='text'
             name='age'
             value={form.age}
+            placeholder='Age'
             onChange={handleChange}
+            className='border-black-300 bg-white-300 shadow-black-100 rounded-md border-2 text-center shadow-md'
           />
         </div>
         <div>
-          <label htmlFor='animal'> Animal </label>
+          <label htmlFor='animal'> </label>
           <input
             type='text'
             name='animal'
+            placeholder='Animal'
             value={form.animal}
             onChange={handleChange}
+            className='border-black-300 bg-white-300 shadow-black-100 rounded-md border-2 text-center shadow-md'
           />
         </div>
         <div>
-          <label htmlFor='bio'> Bio </label>
+          <label htmlFor='bio'> </label>
           <input
             type='text'
             name='bio'
+            placeholder='Biography'
             value={form.bio}
             onChange={handleChange}
+            className='border-black-300 bg-white-300 shadow-black-100 rounded-md border-2 text-center shadow-md'
           />
         </div>
+        <input
+          type='submit'
+          className='text-black-100 rounded-md border-2 border-slate-300 bg-slate-200 p-2 font-mono shadow-md shadow-slate-100'
+        />
       </form>
     </div>
   )
