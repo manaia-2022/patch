@@ -1,5 +1,7 @@
 import React from 'react'
 
+import AddComment from './AddComment'
+
 export default function Card() {
   let pet = {
     id: 1,
@@ -37,6 +39,7 @@ export default function Card() {
             {pet.bio}
           </h2>
         </div>
+        <AddComment />
       </div>
     </body>
   )
