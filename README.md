@@ -80,7 +80,7 @@ pet: {
   age: 2,
   animal: "dog",
   bio: "Bella is a sweet dog who loves to play fetch",
-  image_url: "https://images.unsplash.com/photo-1608744882201-52a7f7f3dd60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80",
+  imageUrl: "https://images.unsplash.com/photo-1608744882201-52a7f7f3dd60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80",
 }
 ```
 
@@ -100,13 +100,13 @@ pets: [
     age: 2,
     animal: 'dog',
     bio: 'Bella is a sweet dog who loves to play fetch',
-    image_url:
+    imageUrl:
       'https://images.unsplash.com/photo-1608744882201-52a7f7f3dd60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80',
     scratchPoints: 11987,
     patPoints: 7632,
     impressions: 21983,
-    created_at: '2021-01-01T00:00:00.000Z',
-    updated_at: '2021-01-01T00:00:00.000Z',
+    createdAt: '2021-01-01T00:00:00.000Z',
+    updatedAt: '2021-01-01T00:00:00.000Z',
   },
   {
     id: 1,
@@ -114,13 +114,13 @@ pets: [
     age: 4,
     animal: 'cat',
     bio: 'A creature of darkness, she will eat your food, and then you',
-    image_url:
+    imageUrl:
       'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
     scratchPoints: 32321,
     patPoints: 5,
     impressions: 32326,
-    created_at: '2021-01-01T00:00:00.000Z',
-    updated_at: '2021-01-01T00:00:00.000Z',
+    createdAt: '2021-01-01T00:00:00.000Z',
+    updatedAt: '2021-01-01T00:00:00.000Z',
   },
 ]
 ```
@@ -139,7 +139,7 @@ Request:
   age: 2,
   animal: "dog",
   bio: "Bella is a sweet dog who loves to play fetch",
-  image_url: "https://images.unsplash.com/photo-1608744882201-52a7f7f3dd60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80",
+  imageUrl: "https://images.unsplash.com/photo-1608744882201-52a7f7f3dd60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80",
 }
 ```
 
