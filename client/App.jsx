@@ -1,12 +1,13 @@
 import { useState } from 'react'
 
+import Card from './components/Layout/Card'
 import MainLayout from './components/Layout/MainLayout'
-
 function App() {
   const [count, setCount] = useState(1)
   return (
     <MainLayout>
-      <div className='mt-4'>
+      <Card />
+      {/* <div className='mt-4'>
         <div className='w-20 rounded-md border-2 border-violet-600 bg-violet-500 p-2 text-center shadow-md shadow-violet-300'>
           <h1 className='text-mono font-bold tracking-wider text-violet-100'>
             Patch
@@ -20,7 +21,7 @@ function App() {
             {count}: Increment
           </button>
         </div>
-      </div>
+      </div> */}
     </MainLayout>
   )
 }
