@@ -5,9 +5,9 @@ import db from '../db/functions/my-pets.db.js'
 
 router.get('/', (req, res) => {
   db.getMyPets()
-    .then((results) => {
-      console.log('router: results', results)
-      res.json(results)
+    .then((pets) => {
+      console.log('router: pets', pets)
+      res.json(pets)
     })
     .catch((err) => {
       console.log(err)
