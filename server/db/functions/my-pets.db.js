@@ -1,7 +1,7 @@
 import connection from '../connection.js'
 
-function getMyPets(db = connection) {
-  return db('pets').select()
+export function getMyPets(ownerId, db = connection) {
+  return db('pets').select().where({ ownerId })
 }
 
-export default { getMyPets }
+// export default { getMyPets }

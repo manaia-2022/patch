@@ -1,10 +1,11 @@
 import express from 'express'
 const router = express.Router()
 
-import db from '../db/functions/my-pets.db.js'
+import * as db from '../db/functions/my-pets.db.js'
 
 router.get('/', (req, res) => {
-  db.getMyPets()
+  const ownerId = 'auth0|123456789'
+  db.getMyPets(ownerId)
     .then((pets) => {
       console.log('router: pets', pets)
       res.json(pets)

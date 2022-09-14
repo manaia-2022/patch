@@ -32,7 +32,7 @@ export default async function createServer(isDev, hmrPort) {
   })
 
   //define petRoute
-  server.use('/api/v1/my-pets', petsRoute)
+  server.use('/api/v1/pets/my', petsRoute)
 
   // use a 404 route to ensure you get good error messages when you miss api routes
   server.use('/api/*', (req, res) => {
