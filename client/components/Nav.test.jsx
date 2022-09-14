@@ -60,4 +60,32 @@ describe('<Nav />', () => {
 
     expect(fakeLogin).toHaveBeenCalled()
   })
+  // click the button when signed in
+  it('should call logout when log off button is pressed', async () => {
+    useAuth0.mockImplementation(() => ({
+      logout: fakeLogout,
+      loginWithRedirect: fakeLogin,
+      isAuthenticated: true,
+      isLoading: false,
+    }))
+    render(<Nav />, { wrapper: Router })
+    const logOffButton = screen.getByRole('button', { name: /log off/i })
+
+    await userEvent.click(logOffButton)
+
+    expect(fakeLogout).toHaveBeenCalled()
+  })
+  // loading gif when isLoading: true
+  it('should display the loading gif when loading the auth', async () => {
+    useAuth0.mockImplementation(() => ({
+      logout: fakeLogout,
+      loginWithRedirect: fakeLogin,
+      isAuthenticated: true,
+      isLoading: true,
+    }))
+    render(<Nav />, { wrapper: Router })
+    const gif = screen.getByRole('img', { alt: /loading/i })
+    console.log(gif.src)
+    expect(gif.alt).toBe('loading')
+  })
 })
