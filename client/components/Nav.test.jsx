@@ -32,6 +32,19 @@ describe('<Nav />', () => {
     const logOffButton = screen.getByText(/log off/i)
     expect(logOffButton).toBeInTheDocument()
   })
+  //text when signed out
+  it('should render Log In when user is signed off (is !Authenticated)', () => {
+    useAuth0.mockImplementation(() => ({
+      logout: fakeLogout,
+      loginWithRedirect: fakeLogin,
+      isAuthenticated: false,
+      isLoading: false,
+    }))
+    render(<Nav />, { wrapper: Router })
+
+    const logOffButton = screen.getByText(/sign in/i)
+    expect(logOffButton).toBeInTheDocument()
+  })
   // click the button when signed out
   it('should call login when login button is pressed', async () => {
     useAuth0.mockImplementation(() => ({
