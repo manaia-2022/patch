@@ -6,7 +6,7 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 function Nav() {
   // TODO: call the useAuth0 hook and destructure logout and loginWithRedirect
-  const { user, logout, loginWithRedirect } = useAuth0()
+  const { user, logout, loginWithRedirect, isLoading } = useAuth0()
   const handleLogOff = (e) => {
     e.preventDefault()
     return logout()
@@ -17,18 +17,21 @@ function Nav() {
     return loginWithRedirect()
   }
 
-  console.log(user)
-
-  return (
+  return !isLoading ? (
     <>
       <div>
         <Link to='/'>Home</Link>
         <IfAuthenticated>
-          <Link to='/' onClick={handleLogOff}>
-            Log off
-          </Link>
           <p>
-            <span role='img' alt='hi'></span>
+            <Link to='/' onClick={handleLogOff}>
+              Log off
+            </Link>
+          </p>
+          <p>
+            {user.name} {' ' + 'AKA ' + user.nickname}
+          </p>
+          <p>
+            <img src={user.picture} alt={user.picture} />
           </p>
         </IfAuthenticated>
         <IfNotAuthenticated>
@@ -37,8 +40,10 @@ function Nav() {
           </Link>
         </IfNotAuthenticated>
       </div>
-      <h1>Fruit FTW!</h1>
+      <h1>Pets FTW!</h1>
     </>
+  ) : (
+    <img src='../../server/public/animated-circle.gif' alt='loading'></img>
   )
 }
 
