@@ -18,11 +18,15 @@ export default function Card() {
       <div className='item-center flex flex-col space-y-4 space-x-4'>
         <h1 className='flex-1'>Discover</h1>
         <img src={pet.imageUrl} alt='animal' />
-        <h2>{pet.name}</h2>
-        <h2>{pet.age}</h2>
-        <h2>{pet.animal}</h2>
-        <h2>Country Location</h2>
-        <h2>{pet.bio}</h2>
+        <h2 className='text-5xl font-black uppercase tracking-wide'>
+          {pet.name}
+        </h2>
+        <h2 className='text-1xl font-normal'>Age: {pet.age}</h2>
+        <h2 className='text-1xl font-normal'>Type: {pet.animal}</h2>
+        <h2 className='text-2xl font-normal'>
+          {' '}
+          About {pet.name}: {pet.bio}
+        </h2>
       </div>
       <div>Fake Footer</div>
     </div>
