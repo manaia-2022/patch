@@ -6,12 +6,51 @@ import connection from '../connection.js'
 
 //Math.random function 1-lengthofdb
 //where id = math.random result
+// how many pets we have
 
-export default function getRandomPets(db = connection) {
+// client ----> server
+// II
+
+// http://localhost:3000/api/v1/pets/random
+
+export function getRandomPets(db = connection) {
   // return db('pets').select('*').fromRaw()
-  return db('pets').select('*').orderByRaw('RANDOM()').first()
+  return db('pets')
+    .orderByRaw('RANDOM()')
+    .first()
+    .join('petImages', 'pets.id', 'petImages.petId')
+    .select(
+      'pets.id as id',
+      'name',
+      'age',
+      'animal',
+      'bio',
+      'petImages.url as imageUrl'
+    )
   //where(knex.raw('id = ?', [id]))
+  // SELECT * FROM pets ORDER BY RANDOM() LIMIT 1;
 }
+
+// .join().select('pets.*', 'petImages.url as imageUrl')
+// function nameAndTraits(db = connection) {
+//   return db('wombles')
+//     .join('traits', 'wombles.trait_id', 'traits.id')
+//     .select('name', 'description')
+// }
+
+// RAW SQLITE
+// https://stackoverflow.com/questions/2279706/select-random-row-from-a-sqlite-table
+
+// export default thing
+// export stuff
+// import thing, { stuff } from './'
+
+// import React, { useState, useEffect } from 'react'
+
+// // named export
+// // un-named/default
+
+// import blah from './'
 
 //export default getRandomPets
 
