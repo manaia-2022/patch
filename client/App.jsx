@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 
+import AddPet from './components/AddPet'
 import MainLayout from './components/Layout/MainLayout'
 
 function App() {
@@ -20,6 +22,9 @@ function App() {
             {count}: Increment
           </button>
         </div>
+        <Routes>
+          <Route path='/my-pets/add' element={<AddPet />} />
+        </Routes>
       </div>
     </MainLayout>
   )
