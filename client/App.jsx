@@ -1,10 +1,28 @@
+// TODO: import useAuth0 function
+import { useAuth0 } from '@auth0/auth0-react'
 import { useState } from 'react'
+import React, { useEffect } from 'react'
 
+//TODO: Import getPets function
+// import { getPets } from '../api'
 import MainLayout from './components/Layout/MainLayout'
 import Nav from './components/Nav.jsx'
 
 function App() {
   const [count, setCount] = useState(1)
+
+  const { getAccessTokenSilently, isAuthenticated } = useAuth0()
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      getAccessTokenSilently().then((token) => {
+        //TODO: return getPets(token)
+      })
+      // .then((remotePets) => setPets(remotePets))
+      // .catch((err) => console.error(err))
+    }
+  }, [])
+
   return (
     <div>
       <Nav />

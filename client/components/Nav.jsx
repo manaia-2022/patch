@@ -28,10 +28,7 @@ function Nav() {
             Log off
           </Link>
           <p>
-            <span role='img' alt={user}>
-              {user}
-            </span>
-            {' ' + user}
+            <span role='img' alt='hi'></span>
           </p>
         </IfAuthenticated>
         <IfNotAuthenticated>

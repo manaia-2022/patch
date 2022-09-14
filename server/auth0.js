@@ -2,8 +2,8 @@ const jwt = require('express-jwt')
 const jwks = require('jwks-rsa')
 
 // TODO: set the domain and audience (API Identifier)
-const domain = ''
-const audience = ''
+const domain = 'manaia-2022-jp.au.auth0.com'
+const audience = 'https://patch/api'
 
 const checkJwt = jwt({
   secret: jwks.expressJwtSecret({
