@@ -1,16 +1,13 @@
 // TODO: import useAuth0 function
 import { useAuth0 } from '@auth0/auth0-react'
-import { useState } from 'react'
 import React, { useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
 
 //TODO: Import getPets function
 // import { getPets } from '../api'
 import MainLayout from './components/Layout/MainLayout'
-import Nav from './components/Nav.jsx'
 
 function App() {
-  const [count, setCount] = useState(1)
-
   const { getAccessTokenSilently, isAuthenticated } = useAuth0()
 
   useEffect(() => {
@@ -24,26 +21,13 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <Nav />
-      <MainLayout>
-        <div className='mt-4'>
-          <div className='w-20 rounded-md border-2 border-violet-600 bg-violet-500 p-2 text-center shadow-md shadow-violet-300'>
-            <h1 className='text-mono font-bold tracking-wider text-violet-100'>
-              Patch
-            </h1>
-          </div>
-          <div className='mt-4'>
-            <button
-              onClick={() => setCount((c) => c + 1)}
-              className='rounded-md border-2 border-slate-600 bg-slate-500 p-2 font-mono text-slate-100 shadow-md shadow-slate-300'
-            >
-              {count}: Increment
-            </button>
-          </div>
-        </div>
-      </MainLayout>
-    </div>
+    <MainLayout>
+      <Routes>
+        <Route path='/' element={<div>Home Route</div>} />
+        <Route path='/my-pets' element={<div>My Pets Route</div>} />
+        <Route path='/my-pets/add' element={<div>Add Pet Route</div>} />
+      </Routes>
+    </MainLayout>
   )
 }
 
