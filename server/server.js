@@ -2,6 +2,8 @@ import express from 'express'
 import path from 'path'
 import { createServer as createViteServer } from 'vite'
 
+import petsRoute from './routes/my-pets.router.js'
+
 // use a function to create the server for async/await support
 export default async function createServer(isDev, hmrPort) {
   const server = express()
@@ -28,6 +30,10 @@ export default async function createServer(isDev, hmrPort) {
   server.get('/api/hello-world', (req, res) => {
     res.json({ message: 'Hello World' })
   })
+
+  //define petRoute
+  server.use('/api/v1/my-pets', petsRoute)
+
   // use a 404 route to ensure you get good error messages when you miss api routes
   server.use('/api/*', (req, res) => {
     res.sendStatus(404)
@@ -45,3 +51,5 @@ export default async function createServer(isDev, hmrPort) {
 
   return server
 }
+
+// module.exports = server
