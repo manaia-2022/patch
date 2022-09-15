@@ -1,12 +1,13 @@
-import getRandomPet from 'pets.api.js'
-import request from 'superagent'
+import getRandomPet from '../../apiClient/pets.api'
 
-export const GET_RANDOM_PET = 'GET_RANDOM_PET'
+export const GET_RANDOM_PET_REQUEST = 'GET_RANDOM_PET_REQUEST'
 export const GET_RANDOM_PET_SUCCESS = 'GET_RANDOM_PET_SUCCESS'
 export const GET_RANDOM_PET_FAILURE = 'GET_RANDOM_PET_FAILURE'
 
 export function fetchRandomPetRequest() {
-  return { type: GET_RANDOM_PET }
+  return {
+    type: GET_RANDOM_PET_REQUEST,
+  }
 }
 
 export function fetchRandomPetSuccess() {
@@ -16,17 +17,24 @@ export function fetchRandomPetSuccess() {
   }
 }
 
-export function fetchRandomPetFailure() {
+export function fetchRandomPetFailure(errorMessage) {
   return {
     type: GET_RANDOM_PET_FAILURE,
-    payload: false,
+    payload: errorMessage,
   }
 }
 
 export function fetchRandomPet() {
   return (dispatch) => {
-    return getRandomPet().then((result) => {
-      dispatch(fetchRandomPetRequest(result))
-    })
+    return dispatch(fetchRandomPetRequest()) //Maybe change this with line 31 getRandomPet()
+      .then(() => {
+        getRandomPet()
+      })
+      .then((res) => {
+        dispatch(fetchRandomPetSuccess(res.body))
+      })
+      .catch((err) => {
+        dispatch(fetchRandomPetFailure(err.message))
+      })
   }
 }

@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
-import randomPet from './randomPet.js'
-import errorMessage from './reducers/errorMessage'
+import errorMessage from './reducers/errorMessage.js'
+import randomPet from './reducers/randomPet.js'
 import waiting from './reducers/waiting.js'
 
 export const store = configureStore({

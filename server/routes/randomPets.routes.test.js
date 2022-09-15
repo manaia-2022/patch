@@ -20,4 +20,17 @@ describe('GET /api/v1/pets/random', () => {
         expect(res.body.name).toContain('roger')
       })
   })
+  it('sends status 500 when promise rejected', () => {
+    db.getRandomPets.mockImplementation(() => {
+      return Promise.reject('sad')
+    })
+    return request(server)
+      .get('/api/v1/pets/random')
+      .then((response) => {
+        expect(response.status).toEqual(500)
+        expect(response.text).toEqual('Server Error')
+      })
+  })
 })
+
+// return Promise.reject(new Error('sad'))

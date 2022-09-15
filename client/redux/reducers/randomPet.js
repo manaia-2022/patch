@@ -1,4 +1,4 @@
-import { GET_RANDOM_PET_REQUEST } from '../actions/pets'
+import { GET_RANDOM_PET_SUCCESS } from '../actions/pets'
 
 const initialState = {
   data: null,
@@ -7,11 +7,10 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-  const { type, payload } = action
+  const { type } = action
   switch (type) {
-    case GET_RANDOM_PET_REQUEST:
-      return payload //is this correct?
-
+    case GET_RANDOM_PET_SUCCESS:
+      return { ...state }
     default:
       return state
   }

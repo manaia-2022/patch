@@ -1,5 +1,5 @@
 import request from 'superagent'
-const serverURL = 'http:localhost:3000/api/v1/pets/random' //possibly check this
+const serverURL = '/api/v1/pets/random' //possibly check this
 
 export function getRandomPet() {
   return request.get(serverURL).then((response) => {
@@ -7,5 +7,3 @@ export function getRandomPet() {
     return response.body
   })
 }
-
-getRandomPet()
