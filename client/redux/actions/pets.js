@@ -2,7 +2,7 @@
 export const FETCH_PETS_REQUEST = 'FETCH_PETS_REQUEST'
 export const FETCH_PETS_SUCCESS = 'FETCH_PETS_SUCCESS'
 export const FETCH_PETS_FAILURE = 'FETCH_PETS_FAILURE'
-import { getMyPets } from '../apiClient/my-pets.api'
+import { getMyPets } from '../../apiClient/my-pets.api'
 
 //Simple actions
 //where do we put the token parameter?
@@ -14,18 +14,17 @@ export const fetchPetsRequest = () => ({
 
 export const fetchPetsSuccess = (pets) => ({
   type: FETCH_PETS_SUCCESS,
-  payload: pets,
+  payload: { pets },
 })
 
 export const fetchPetsFailure = (error) => ({
   type: FETCH_PETS_FAILURE,
-  payload: error,
+  payload: { error },
 })
 
-export const fetchPets = () => (dispatch) => {
-  dispatch({ type: 'FETCH_FRUITS_REQUEST' })
+export const fetchPets = (token) => (dispatch) => {
   dispatch(fetchPetsRequest())
-  getMyPets()
+  getMyPets(token)
     .then((pets) => {
       dispatch(fetchPetsSuccess(pets))
     })
