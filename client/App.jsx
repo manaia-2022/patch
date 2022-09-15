@@ -1,10 +1,9 @@
-// TODO: import useAuth0 function
 import { useAuth0 } from '@auth0/auth0-react'
 import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 //TODO: Import getPets function
-// import { getPets } from '../api'
+// e.g. import { getPets } from '../api'
 import DiscoverRoute from './components/DiscoverRoute'
 import MainLayout from './components/Layout/MainLayout'
 
@@ -13,13 +12,13 @@ function App() {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      getAccessTokenSilently()
-        //TODO: return getPets(token)
-        // .then((token) => {
-
-        // })
-        // .then((remotePets) => setPets(remotePets))
-        .catch((err) => console.error(err))
+      //TODO: something like this...
+      // getAccessTokenSilently()
+      //   return getPets(token)
+      //   // .then((token) => {
+      //   // })
+      //   // .then((remotePets) => setPets(remotePets))
+      //   .catch((err) => console.error(err))*
     }
   }, [])
 

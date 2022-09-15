@@ -1,5 +1,5 @@
-const jwt = require('express-jwt')
-const jwks = require('jwks-rsa')
+import jwt from 'express-jwt'
+import jwks from 'jwks-rsa'
 
 // TODO: set the domain and audience (API Identifier)
 const domain = 'manaia-2022-jp.au.auth0.com'
@@ -17,4 +17,4 @@ const checkJwt = jwt({
   algorithms: ['RS256'],
 })
 
-module.exports = checkJwt
+export default checkJwt

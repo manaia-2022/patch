@@ -3,8 +3,6 @@ const router = express.Router()
 const checkJwt = require('../auth0')
 const db = require('../db/functions/users')
 
-// TODO: use checkJwt as middleware
-// GET /api/v1/users
 router.get('/', checkJwt, (req, res) => {
   const auth0_id = req.user?.sub
 
