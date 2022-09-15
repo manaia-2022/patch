@@ -9,8 +9,7 @@ router.get('/', (req, res) => {
     .then((randomPet) => {
       res.json(randomPet)
     })
-    .catch((err) => {
-      console.log(err.message)
+    .catch(() => {
       res.status(500).send('Server Error')
     })
 })

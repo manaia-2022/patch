@@ -22,7 +22,7 @@ describe('GET /api/v1/pets/random', () => {
   })
   it('sends status 500 when promise rejected', () => {
     db.getRandomPets.mockImplementation(() => {
-      return Promise.reject('sad')
+      return Promise.reject(new Error('sadder..'))
     })
     return request(server)
       .get('/api/v1/pets/random')
