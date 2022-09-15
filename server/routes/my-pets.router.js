@@ -21,9 +21,8 @@ router.post('/', (req, res) => {
         imageUrl,
       }
       insertImage(newImage).then(() => {
-        return res.status(201)
+        res.sendStatus(201)
       })
-      res.sendStatus(201)
     })
     .catch((err) => {
       console.log(err)
