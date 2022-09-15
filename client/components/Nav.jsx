@@ -21,7 +21,7 @@ function Nav() {
       <div>
         <div className='mx-auto flex flex-wrap items-center justify-between'>
           <div className=' hidden w-full md:block' id='navbar-default'>
-            <ul className='mt-4 flex flex-col border-purple-900 p-2 md:mt-0 md:flex-row md:space-x-4 md:border-4 md:bg-purple-700 md:bg-white md:text-sm md:font-medium'>
+            <ul className='mt-4 flex flex-col border-purple-900 bg-purple-700 p-2 md:mt-0 md:flex-row md:space-x-4 md:border-4 md:text-sm md:font-medium'>
               <li>
                 <Link
                   to='/'
