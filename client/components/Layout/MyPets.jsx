@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-// import fetchPets from '../redux/actions/pets.js'
 import { fetchPets } from '../../redux/actions/pets.js'
 
 // const myPetsState = useSelector((state) => state.myPets)
@@ -10,13 +9,14 @@ import { fetchPets } from '../../redux/actions/pets.js'
 
 export default function MyPets() {
   const dispatch = useDispatch()
-  const { data: pets, loading, error } = useSelector((state) => state.myPets)
 
-  console.log(pets)
+  const { data: pets, loading, error } = useSelector((state) => state.myPets)
 
   useEffect(() => {
     dispatch(fetchPets())
   }, [])
+
+  console.log('hello', pets)
 
   return (
     <div>
