@@ -5,10 +5,11 @@ import * as db from '../db/functions/comments.db.js'
 // POST /api/v1/
 router.post('/', (req, res) => {
   const newCommentData = req.body
+  const date = Date.now()
   console.log('route', newCommentData)
-  db.addComment(newCommentData)
-    .then((comment) => {
-      res.json(comment)
+  db.addComment({ ...newCommentData, createdAt: date })
+    .then(() => {
+      res.sendStatus(201)
     })
     .catch((err) => {
       console.log(err)

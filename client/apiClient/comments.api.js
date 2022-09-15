@@ -6,8 +6,8 @@ export function addComment(form) {
     .post(serverURL)
     .send(form)
     .then((res) => {
-      if (res.status === 200) {
-        return res.body
+      if (res.status === 201) {
+        return 'Thanks for your comment!'
       } else {
         throw new Error('wow not saved')
       }

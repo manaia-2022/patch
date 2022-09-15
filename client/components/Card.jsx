@@ -39,7 +39,7 @@ export default function Card() {
             {pet.bio}
           </h2>
         </div>
-        <AddComment />
+        <AddComment pet={pet} />
       </div>
     </body>
   )
