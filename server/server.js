@@ -2,6 +2,8 @@ import express from 'express'
 import path from 'path'
 import { createServer as createViteServer } from 'vite'
 
+import commentsRoute from './routes/comments.router.js'
+
 // use a function to create the server for async/await support
 export default async function createServer(isDev, hmrPort) {
   const server = express()
@@ -25,9 +27,13 @@ export default async function createServer(isDev, hmrPort) {
 
   // user-defined routes and middleware
   server.use(express.urlencoded({ extended: true }))
+  server.use(express.json())
   server.get('/api/hello-world', (req, res) => {
     res.json({ message: 'Hello World' })
   })
+
+  server.use('/api/v1/patch', commentsRoute)
+
   // use a 404 route to ensure you get good error messages when you miss api routes
   server.use('/api/*', (req, res) => {
     res.sendStatus(404)

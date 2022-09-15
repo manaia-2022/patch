@@ -1,47 +1,69 @@
-import React from 'react'
-// import React, {useEffect, useState} from 'react'
-// {comments.api function name} from '../apiClient/comments.api.js'
+import React, { useState } from 'react'
+
+import { addComment } from '../apiClient/comments.api'
 
 // initialise the commit data - tbd what we need
-// const initialFormData ={
-//  data is set to null
-// id - int
-// petId - int
-// userId - varchar
-// content - varchar
-// createdAt - varchar
-// updatedAt - varchar
-// }
+const initialFormData = {
+  // id - int
+  petId: 1,
+  userId: 'auth0|123456789',
+  content: '',
+  createdAt: Date.now(),
+  // updatedAt: '',
+}
 
-export default function AddComment() {
-  // set up the variables to handle the state changes
-  // eg useEffect and useState variables, functions
+export default function AddComment(props) {
+  // const [comments, setComments] = useState([])
+  const [form, setForm] = useState(initialFormData)
 
-  // functions to handle the change in the state of the data
-  // and how to handle the submit from the form
+  function handleChange(event) {
+    //   const { petID, comment, createdAt, value } = event.target
+    // const { petId, comment, value } = event.target
 
-  // const [form, setForm ] = useState(initialFormData)
-  // function handleChange(event) {
-  //  const {petID, content, createdAt} = event.target
-  // const newForm = {
-  // ...form, [petId]: value,
-  // [comment]: value,
-  // [createdAt]: value,
-  // }
+    const newForm = {
+      ...form,
+      [event.target.name]: event.target.value,
+      // [petId]: value,
+      // [comment]: value,
+      // [createdAt]: value,
+    }
+    setForm(newForm)
+  }
 
-  // }
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log('submit')
+    addComment(form)
+      .then((newComment) => {
+        props.setComments(newComment) // <<< pass the object!!
+        setForm(initialFormData)
+      })
+      .catch((err) => {
+        console.error(err.message)
+      })
+  }
 
   return (
-    <div className='flex justify-center'>
-      <form>
-        <label htmlFor='comment'>Add a comment: </label>
-        <input
-          className='border-2 border-solid border-black'
-          type='text'
-          id='comment'
-          name='comment'
-        ></input>
-      </form>
-    </div>
+    <>
+      <div className='flex justify-center'>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor='content'>Add a comment: </label>
+          <input
+            className='border-2 border-solid border-black'
+            type='text'
+            id='content'
+            name='content'
+            onChange={handleChange}
+            value={form.content}
+          ></input>
+          <button
+            className='rounded-full bg-purple-500 py-2 px-4 font-bold text-white hover:bg-purple-700'
+            type='submit'
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </>
   )
 }
