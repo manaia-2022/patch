@@ -51,14 +51,14 @@ function Nav() {
                       alt={user?.name}
                     />
                   </li>
-                  <li className='absolute right-5 block rounded py-2 pr-4 pl-3 text-gray-700 text-gray-400 hover:bg-purple-900 hover:text-white md:border-2 md:p-2 md:text-white md:hover:text-white md:hover:text-white'>
+                  <li className='absolute right-5 block rounded py-2 pr-4 pl-3 text-gray-700 text-gray-400 hover:bg-purple-900 hover:text-white md:border-2 md:p-2 md:text-white md:hover:text-white md:hover:text-white '>
                     <div>
                       <button onClick={handleLogOff}>Log off</button>
                     </div>
                   </li>
                 </>
               ) : (
-                <li className='absolute right-5 block rounded py-2 pr-4 pl-3 text-gray-700 text-gray-400 hover:bg-purple-900 hover:text-white md:border-2 md:p-2 md:text-white md:hover:text-white md:hover:text-white'>
+                <li className='absolute right-5 block rounded py-2 pr-4 pl-3 text-gray-700 text-gray-400 hover:bg-purple-900 hover:text-white md:border-2 md:p-2 md:text-white md:hover:text-white md:hover:text-white '>
                   <button onClick={handleSignIn}>Sign In</button>
                 </li>
               )}
@@ -68,7 +68,11 @@ function Nav() {
       </div>
     </>
   ) : (
-    <img src='../../server/public/animated-circle.gif' alt='loading'></img>
+    <img
+      className='m-auto flex w-20'
+      src='../../server/public/animated-circle.gif'
+      alt='loading'
+    ></img>
   )
 }
 
