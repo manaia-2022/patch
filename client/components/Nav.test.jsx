@@ -85,7 +85,6 @@ describe('<Nav />', () => {
     }))
     render(<Nav />, { wrapper: Router })
     const gif = screen.getByRole('img', { alt: /loading/i })
-    console.log(gif.src)
     expect(gif.alt).toBe('loading')
   })
 })
