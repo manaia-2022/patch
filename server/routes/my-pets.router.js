@@ -7,12 +7,12 @@ router.get('/', (req, res) => {
   const ownerId = 'auth0|123456789'
   db.getMyPets(ownerId)
     .then((pets) => {
-      console.log('router: pets', pets)
+      // console.log('router: pets', pets)
       res.json(pets)
     })
     .catch((err) => {
-      console.log(err)
-      res.status(500).json({ message: 'Something went wrong' })
+      console.log(err.message)
+      res.status(500).send('Something went wrong')
     })
 })
 
