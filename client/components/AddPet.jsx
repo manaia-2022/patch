@@ -1,19 +1,8 @@
 //To-do:
 //TESTING
-//Create an addpet component (This is it) (Setup skeleton)
-//Create form in the component (name, age, animal, bio, image_url)
-//Route to App component so form can be seen
-
-//Route to the API (POST to /api/v1/pets/my ?)
-//Set up db actions to allow form to add to db
-//Seperate these 2 and test with thunder client might be easier
-
-//Set up actions and reducer to allow form to add to state
-//Research a way to allow user to add an image to the form (Amazon S3 or Cloudinary)
 //CSS
 
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
 
 import { addPet, getImageUrl } from '../apiClient/addPet'
 
@@ -41,8 +30,6 @@ export default function AddPet() {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    console.log('Form: ', form)
-    console.log('File:', selectedFile)
     // const token = await getAccessTokenSilently()
     const image = selectedFile
     try {

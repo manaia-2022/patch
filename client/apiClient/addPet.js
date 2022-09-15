@@ -1,12 +1,10 @@
 import request from 'superagent'
 
 export function addPet(pet) {
-  console.log(pet)
   return request
     .post('/api/v1/pets/my')
     .send(pet)
     .then((res) => {
-      console.log('From API: ', res)
       return res.body
     })
 }

@@ -1,13 +1,14 @@
 import { v2 as cloudinary } from 'cloudinary'
+import * as dotenv from 'dotenv'
 import express from 'express'
+dotenv.config()
 const router = express.Router()
 
-import { insertPet } from '../db/functions/insertPet.js'
+const cloudName = 'dhgfouvnw'
+const apiKey = '847294152393479'
+const apiSecret = process.env.SECRET_KEY
 
-router.get('/', (req, res) => {
-  console.log(req)
-  res.json('Hello')
-})
+import { insertImage, insertPet } from '../db/functions/insertPet.js'
 
 router.post('/', (req, res) => {
   const { name, animal, age, bio, imageUrl } = req.body
@@ -19,8 +20,9 @@ router.post('/', (req, res) => {
         petId: newId,
         imageUrl,
       }
-      // add to images table
-      console.log('After db func: ', result)
+      insertImage(newImage).then(() => {
+        return res.status(201)
+      })
       res.sendStatus(201)
     })
     .catch((err) => {
@@ -29,9 +31,6 @@ router.post('/', (req, res) => {
     })
 })
 
-const apiSecret = 'FVB10AO8DvJgKpXwiWA60cd7iHo'
-const cloudName = 'rohan-aihe'
-const apiKey = '516514146324499'
 router.post('/image', (req, res) => {
   const timestamp = Math.round(new Date().getTime() / 1000)
 
