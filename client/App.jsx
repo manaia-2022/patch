@@ -14,9 +14,10 @@ function App() {
   useEffect(() => {
     if (!isAuthenticated) {
       getAccessTokenSilently()
-        .then((token) => {
-          //TODO: return getPets(token)
-        })
+        //TODO: return getPets(token)
+        // .then((token) => {
+
+        // })
         // .then((remotePets) => setPets(remotePets))
         .catch((err) => console.error(err))
     }
