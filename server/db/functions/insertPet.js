@@ -1,7 +1,8 @@
 import connection from '../connection.js'
 
-function insertPet(pet, db = connection) {
+export function insertPet(pet, db = connection) {
+  console.log('DB', pet)
   return db('pets').insert(pet)
+  //.returning(pet)
+  //returning('id')
 }
-
-export default insertPet

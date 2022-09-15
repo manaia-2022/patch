@@ -15,8 +15,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { addNewPet } from '../redux/actions'
-//import { } from '../redux/actions/index' //Import actions from index
+import { addPet, getImageUrl } from '../apiClient/addPet'
 
 const initialData = {
   name: '',
@@ -26,8 +25,8 @@ const initialData = {
 }
 
 export default function AddPet() {
-  const dispatch = useDispatch()
   const [form, setForm] = useState(initialData)
+  const [selectedFile, setSelectedFile] = useState(null)
 
   function handleChange(e) {
     setForm({
@@ -36,10 +35,27 @@ export default function AddPet() {
     })
   }
 
-  function handleSubmit(e) {
+  function handleFileChange(e) {
+    setSelectedFile(e.target.files[0])
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault()
     console.log('Form: ', form)
-    dispatch(addNewPet(form))
+    console.log('File:', selectedFile)
+    // const token = await getAccessTokenSilently()
+    const image = selectedFile
+    try {
+      const imageUrl = await getImageUrl(image) // TODO: pass token
+      const pet = {
+        ...form,
+        imageUrl,
+      }
+      console.log('Pet: ', pet)
+      await addPet(pet)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -49,6 +65,7 @@ export default function AddPet() {
         <div>
           <label htmlFor='name'> </label>
           <input
+            id='name'
             type='text'
             name='name'
             value={form.name}
@@ -60,6 +77,7 @@ export default function AddPet() {
         <div>
           <label htmlFor='age'> </label>
           <input
+            id='age'
             type='text'
             name='age'
             value={form.age}
@@ -82,11 +100,23 @@ export default function AddPet() {
         <div>
           <label htmlFor='bio'> </label>
           <input
+            id='bio'
             type='text'
             name='bio'
             placeholder='Biography'
             value={form.bio}
             onChange={handleChange}
+            className='border-black-300 bg-white-300 shadow-black-100 rounded-md border-2 text-center shadow-md'
+          />
+        </div>
+        <div>
+          <label htmlFor='image'>Upload an image</label>
+          <input
+            id='image'
+            type='file'
+            name='image'
+            accept='image/*'
+            onChange={handleFileChange}
             className='border-black-300 bg-white-300 shadow-black-100 rounded-md border-2 text-center shadow-md'
           />
         </div>
