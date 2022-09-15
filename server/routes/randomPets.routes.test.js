@@ -32,5 +32,3 @@ describe('GET /api/v1/pets/random', () => {
       })
   })
 })
-
-// return Promise.reject(new Error('sad'))

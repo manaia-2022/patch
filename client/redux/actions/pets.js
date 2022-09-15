@@ -1,4 +1,4 @@
-import getRandomPet from '../../apiClient/pets.api'
+import { getRandomPet } from '../../apiClient/pets.api'
 
 export const GET_RANDOM_PET_REQUEST = 'GET_RANDOM_PET_REQUEST'
 export const GET_RANDOM_PET_SUCCESS = 'GET_RANDOM_PET_SUCCESS'
@@ -10,28 +10,26 @@ export function fetchRandomPetRequest() {
   }
 }
 
-export function fetchRandomPetSuccess() {
+export function fetchRandomPetSuccess(pet) {
   return {
     type: GET_RANDOM_PET_SUCCESS,
-    payload: true,
+    payload: { pet },
   }
 }
 
-export function fetchRandomPetFailure(errorMessage) {
+export function fetchRandomPetFailure(errMessage) {
   return {
     type: GET_RANDOM_PET_FAILURE,
-    payload: errorMessage,
+    payload: { errMessage },
   }
 }
 
 export function fetchRandomPet() {
   return (dispatch) => {
-    return dispatch(fetchRandomPetRequest()) //Maybe change this with line 31 getRandomPet()
-      .then(() => {
-        getRandomPet()
-      })
-      .then((res) => {
-        dispatch(fetchRandomPetSuccess(res.body))
+    dispatch(fetchRandomPetRequest())
+    return getRandomPet()
+      .then((pet) => {
+        dispatch(fetchRandomPetSuccess(pet))
       })
       .catch((err) => {
         dispatch(fetchRandomPetFailure(err.message))
