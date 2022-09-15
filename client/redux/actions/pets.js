@@ -29,6 +29,6 @@ export const fetchPets = (token) => (dispatch) => {
       dispatch(fetchPetsSuccess(pets))
     })
     .catch((error) => {
-      dispatch(fetchPetsFailure(error))
+      dispatch(fetchPetsFailure(error.message))
     })
 }

@@ -2,7 +2,7 @@ import {
   FETCH_PETS_FAILURE,
   FETCH_PETS_REQUEST,
   FETCH_PETS_SUCCESS,
-} from '../actions'
+} from '../actions/pets'
 
 const initialState = {
   data: null,
@@ -31,7 +31,7 @@ const initialState = {
 //   error: 'some error message'
 // }
 
-const reducer = (state = initialState, action) => {
+export default function myPetsReducer(state = initialState, action) {
   const { type, payload } = action
 
   switch (type) {
@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
       return { data: payload.pets, loading: false, error: null } // data will be returned (e.g. data: pets or pets.data), loading = false, error = null
     case FETCH_PETS_FAILURE:
       return { ...state, loading: false, error: payload.error } // data will be null, loading = false, error = true
+    default:
+      return state
   }
 }
-
-export default reducer

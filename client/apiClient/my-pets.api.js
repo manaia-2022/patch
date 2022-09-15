@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const rootUrl = '/api/v1/my-pets'
+const rootUrl = '/api/v1/pets/my'
 
 export function getMyPets(token) {
   return request

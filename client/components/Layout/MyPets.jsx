@@ -4,16 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 // import fetchPets from '../redux/actions/pets.js'
 import { fetchPets } from '../../redux/actions/pets.js'
 
-//do we import store? since store refers to or myPets state for
-//I think we need to import reducers.
+// const myPetsState = useSelector((state) => state.myPets)
+// const pets = myPetsState.data
+// const loading = myPetsState.loading
 
 export default function MyPets() {
   const dispatch = useDispatch()
-  const petsData = useSelector((state) => state.data)
-  const petsLoading = useSelector((state) => state.loading)
-  const petsError = useSelector((state) => state.error)
+  const { data: pets, loading, error } = useSelector((state) => state.myPets)
 
-  console.log(petsData)
+  console.log(pets)
 
   useEffect(() => {
     dispatch(fetchPets())
