@@ -7,6 +7,7 @@ export function getMyPets(token) {
     .get(rootUrl)
     .set('Authorization', `Bearer ${token}`)
     .then((res) => {
-      return res.body.pets
+      console.log('api', res.body)
+      return res.body
     })
 }

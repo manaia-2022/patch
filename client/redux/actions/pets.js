@@ -23,6 +23,7 @@ export const fetchPets = (token) => (dispatch) => {
   dispatch(fetchPetsRequest())
   getMyPets(token)
     .then((pets) => {
+      console.log('actions', pets)
       dispatch(fetchPetsSuccess(pets))
     })
     .catch((error) => {
