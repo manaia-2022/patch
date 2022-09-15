@@ -1,6 +1,4 @@
-// needs to be .cjs, there is a bug in vite with ESM
-
-/// <reference types="vite/client" />
+/// <reference types="vitest" />
 const react = require('@vitejs/plugin-react')
 const { defineConfig } = require('vite')
 
