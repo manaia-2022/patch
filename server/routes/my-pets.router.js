@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
       insertImage(newImage).then(() => {
         res.sendStatus(201)
       })
+      return { ...result }
     })
     .catch((err) => {
       console.log(err)
