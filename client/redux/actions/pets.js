@@ -5,9 +5,6 @@ export const FETCH_PETS_FAILURE = 'FETCH_PETS_FAILURE'
 import { getMyPets } from '../../apiClient/my-pets.api'
 
 //Simple actions
-//where do we put the token parameter?
-//currently token is not defined.
-
 export const fetchPetsRequest = () => ({
   type: FETCH_PETS_REQUEST,
 })
