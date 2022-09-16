@@ -6,8 +6,8 @@ import express from 'express'
 import { checkJwt } from '../auth0.js'
 const router = express.Router()
 
-const cloudName = 'dhgfouvnw'
-const apiKey = '847294152393479'
+const cloudName = 'rohan-aihe'
+const apiKey = '516514146324499'
 const apiSecret = process.env.SECRET_KEY
 
 import * as db from '../db/functions/my-pets.db.js'

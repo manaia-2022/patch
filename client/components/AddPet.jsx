@@ -1,5 +1,6 @@
-import { useAuth0 } from '@auth0/auth0-react'
+import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { addPet, getImageUrl } from '../apiClient/addPet'
 
@@ -10,7 +11,8 @@ const initialData = {
   bio: '',
 }
 
-export default function AddPet() {
+function AddPet() {
+  const navigate = useNavigate()
   const { getAccessTokenSilently } = useAuth0()
   const [form, setForm] = useState(initialData)
   const [selectedFile, setSelectedFile] = useState(null)
@@ -37,6 +39,7 @@ export default function AddPet() {
         imageUrl,
       }
       await addPet(pet, token)
+      navigate('.')
     } catch (err) {
       console.log(err)
     }
@@ -114,3 +117,7 @@ export default function AddPet() {
     </div>
   )
 }
+
+export default withAuthenticationRequired(AddPet, {
+  onRedirecting: () => <div>Redirecting you to the login page...</div>,
+})

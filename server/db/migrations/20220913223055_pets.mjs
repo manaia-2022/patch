@@ -10,9 +10,9 @@ export const up = async (knex) => {
     table.int('age')
     table.string('animal')
     table.string('bio')
-    table.int('impressions')
-    table.int('patchPoints')
-    table.int('scratchPoints')
+    table.int('impressions').defaultTo(0)
+    table.int('patchPoints').defaultTo(0)
+    table.int('scratchPoints').defaultTo(0)
     table.timestamps(true, true, true)
   })
 }
