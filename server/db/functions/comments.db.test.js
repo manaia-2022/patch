@@ -21,7 +21,7 @@ afterAll(async () => {
 // DB schema for PetComments
 // https://vitest.dev/config/
 describe('addComment', () => {
-  it.only('add a new comment to the pet', () => {
+  it('add a new comment to the pet', () => {
     const testComment = { petId: 2, userId: 'Sarah', content: 'Testing' }
     return addComment(testComment, testCon).then((data) => {
       expect(data.petId).toBe(2)
