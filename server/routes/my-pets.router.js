@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
   const ownerId = 'auth0|123456789'
   db.getMyPets(ownerId)
     .then((pets) => {
-      // console.log('router: pets', pets)
       res.json(pets)
     })
     .catch((err) => {

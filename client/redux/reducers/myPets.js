@@ -16,7 +16,6 @@ export default function myPetsReducer(state = initialState, action) {
     case FETCH_PETS_REQUEST:
       return { ...state, loading: true, error: null }
     case FETCH_PETS_SUCCESS:
-      // payload === pets
       return { data: payload.pets, loading: false, error: null }
     case FETCH_PETS_FAILURE:
       return { ...state, loading: false, error: payload.error }
