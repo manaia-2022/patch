@@ -1,7 +1,3 @@
-//To-do:
-//TESTING
-//CSS
-
 import React, { useState } from 'react'
 
 import { addPet, getImageUrl } from '../apiClient/addPet'
@@ -48,7 +44,7 @@ export default function AddPet() {
   return (
     <div>
       <h3 className='text-center'>Add a Pet</h3>
-      <form onSubmit={handleSubmit}>
+      <form name='addPetForm' onSubmit={handleSubmit}>
         <div>
           <label htmlFor='name'> </label>
           <input
@@ -107,10 +103,12 @@ export default function AddPet() {
             className='border-black-300 bg-white-300 shadow-black-100 rounded-md border-2 text-center shadow-md'
           />
         </div>
-        <input
+        <button
           type='submit'
           className='text-black-100 rounded-md border-2 border-slate-300 bg-slate-200 p-2 font-mono shadow-md shadow-slate-100'
-        />
+        >
+          Submit
+        </button>
       </form>
     </div>
   )

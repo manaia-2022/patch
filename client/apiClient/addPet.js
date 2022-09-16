@@ -1,8 +1,9 @@
 import request from 'superagent'
 
-export function addPet(pet) {
+export function addPet(pet, token) {
   return request
     .post('/api/v1/pets/my')
+    .set('Authorization', `Bearer ${token}`)
     .send(pet)
     .then((res) => {
       return res.body

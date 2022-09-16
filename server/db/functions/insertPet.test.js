@@ -25,8 +25,9 @@ describe('insertPet', () => {
       return testDb('pets')
         .select()
         .where({ id: 6 })
-        .then((res) => {
-          expect(res[0].name).toBe('Ace')
+        .first()
+        .then((pet) => {
+          expect(pet.name).toBe('Ace')
         })
     })
   })
@@ -38,13 +39,14 @@ describe('insertImage', () => {
     imageUrl: 'res.cloudinary/example/image/dog.jpg',
   }
   it('inserts an image into the db', () => {
-    return insertImage(image, testDb).then((res) => {
-      expect(res[0]).toBe(6)
+    return insertImage(image, testDb).then((newIds) => {
+      expect(newIds[0]).toBe(6)
       return testDb('petImages')
         .select()
         .where({ petId: null })
-        .then((res) => {
-          expect(res[0].url).toContain('dog.jpg')
+        .first()
+        .then((image) => {
+          expect(image.url).toContain('dog.jpg')
         })
     })
   })

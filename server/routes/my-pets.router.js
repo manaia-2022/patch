@@ -10,9 +10,13 @@ const apiSecret = process.env.SECRET_KEY
 
 import { insertImage, insertPet } from '../db/functions/insertPet.js'
 
+// TODO: make sure user is signed in before rendering AddPet.jsx // https://auth0.com/docs/libraries/auth0-react#protect-a-route
+// TODO: getAccessTokenSilently() before making addPet request
+// TODO: add checkJwt and add ownerId to db
 router.post('/', (req, res) => {
+  const ownerId = req.auth?.sub
   const { name, animal, age, bio, imageUrl } = req.body
-
+  // ownerId
   insertPet({ name, animal, age, bio })
     .then((result) => {
       const newId = result[0]
@@ -20,13 +24,13 @@ router.post('/', (req, res) => {
         petId: newId,
         imageUrl,
       }
-      insertImage(newImage).then(() => {
-        res.sendStatus(201)
-      })
-      return { ...result }
+      return insertImage(newImage)
+    })
+    .then(() => {
+      res.sendStatus(201)
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err.message)
       res.status(500).json({ message: 'Something went wrong' })
     })
 })
