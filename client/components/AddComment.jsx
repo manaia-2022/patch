@@ -18,15 +18,9 @@ export default function AddComment(props) {
   const [thanks, setThanks] = useState(null)
 
   function handleChange(event) {
-    //   const { petID, comment, createdAt, value } = event.target
-    // const { petId, comment, value } = event.target
-
     const newForm = {
       ...form,
       [event.target.name]: event.target.value,
-      // [petId]: value,
-      // [comment]: value,
-      // [createdAt]: value,
     }
     setForm(newForm)
   }
@@ -55,7 +49,7 @@ export default function AddComment(props) {
           </div>
           <div className='flex justify-center'>
             <input
-              className=' flex justify-center border-2 border-solid border-black p-10 pr-4'
+              className=' flex justify-center border-2 border-solid border-black p-5'
               type='text'
               id='content'
               name='content'
