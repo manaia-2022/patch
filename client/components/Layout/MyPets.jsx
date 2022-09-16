@@ -17,11 +17,17 @@ export default function MyPets() {
   ) : error ? (
     'No pets here'
   ) : (
-    <div>
-      <h1>Our Pet Page</h1>
-      {pets.map((petObj) => {
-        return <Pet key={petObj.id} pet={petObj} />
-      })}
-    </div>
+    <>
+      <div className='justify center flex flex-col'>
+        <h1 className='flex justify-center p-10 text-5xl font-black uppercase tracking-wide text-purple-900'>
+          Our Pets
+        </h1>
+        <div className='inline-grid grid-cols-3 grid-rows-1 gap-2'>
+          {pets.map((petObj) => {
+            return <Pet key={petObj.id} pet={petObj} />
+          })}
+        </div>
+      </div>
+    </>
   )
 }
