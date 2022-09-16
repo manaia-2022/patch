@@ -4,7 +4,14 @@ const rootUrl = '/api/v1/pets'
 
 export function scratchPet(id) {
   return request
-    .patch(rootUrl + `/votes/${id}`)
+    .patch(rootUrl + `/votes/scratch/${id}`)
+    .send({ id })
+    .then((res) => res.body)
+}
+
+export function patchPet(id) {
+  return request
+    .patch(rootUrl + `/votes/patch/${id}`)
     .send({ id })
     .then((res) => res.body)
 }

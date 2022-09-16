@@ -1,27 +1,31 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
 
-import { scratchPet } from '../apiClient/apiClient'
+import { patchPet, scratchPet } from '../apiClient/apiClient'
 
 export default function Voting(props) {
   // const { id } = useParams()
   const { petId } = props
   function scratch() {
-    console.log(petId)
     scratchPet(petId)
   }
   function retry() {
     // reload/get another random pet
   }
   function patch() {
-    // todo
+    patchPet(petId)
   }
 
   return (
     <>
-      <button onClick={scratch}>Scratch</button>
-      <button onClick={retry}>Retry</button>
-      <button onClick={patch}>Patch</button>
+      <div>
+        <button onClick={scratch}>Scratch</button>
+      </div>
+      <div>
+        <button onClick={retry}>Retry</button>
+      </div>
+      <div>
+        <button onClick={patch}>Patch</button>
+      </div>
     </>
   )
 }

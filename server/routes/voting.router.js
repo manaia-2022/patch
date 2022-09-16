@@ -4,8 +4,18 @@ import * as db from '../db/functions/voting.db.js'
 
 const router = express.Router()
 // /api/v1/pets/votes/:id
-router.patch('/:id', (req, res) => {
+router.patch('/scratch/:id', (req, res) => {
   db.addScratch(req.params.id)
+    .then((result) => {
+      res.json(result)
+    })
+    .catch(() => {
+      res.status(500).send('Server Error')
+    })
+})
+
+router.patch('/patch/:id', (req, res) => {
+  db.addPatch(req.params.id)
     .then((result) => {
       res.json(result)
     })
