@@ -24,7 +24,7 @@ describe('getRandomPets', () => {
       expect(typeof data.id).toBe('number')
       expect(typeof data.name).toBe('string')
       expect(typeof data.animal).toBe('string')
-      expect(typeof data.age).toBe('number')
+      expect(typeof data.age).toBe('string')
       expect(typeof data.imageUrl).toBe('string')
       expect(data.createdAt).toBeUndefined()
       expect(data.updatedAt).toBeUndefined()

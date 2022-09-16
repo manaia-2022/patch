@@ -7,7 +7,7 @@ export const up = async (knex) => {
     table.increments('id')
     table.string('ownerId')
     table.string('name')
-    table.int('age')
+    table.string('age')
     table.string('animal')
     table.string('bio')
     table.int('impressions').defaultTo(0)
