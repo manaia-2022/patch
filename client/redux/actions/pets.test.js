@@ -24,7 +24,6 @@ describe('testing fetchRandomPet thunk', () => {
     return actions
       .fetchRandomPet()(dispatch)
       .then(() => {
-        console.log(dispatch.mock.calls[1][0])
         expect(dispatch.mock.calls[1][0].type).toBe('GET_RANDOM_PET_FAILURE')
         expect(dispatch.mock.calls[1][0].payload.errMessage).toBe('sad')
       })
