@@ -2,8 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-//TODO: Import getPets function
-// e.g. import { getPets } from '../api'
+import AddPet from './components/AddPet'
 import DiscoverRoute from './components/DiscoverRoute'
 import MainLayout from './components/Layout/MainLayout'
 
@@ -27,7 +26,14 @@ function App() {
       <Routes>
         <Route path='/' element={<DiscoverRoute />} />
         <Route path='/my-pets' element={<div>My Pets Route</div>} />
-        <Route path='/my-pets/add' element={<div>Add Pet Route</div>} />
+        <Route
+          path='/my-pets/add'
+          element={
+            <div>
+              <AddPet />
+            </div>
+          }
+        />
       </Routes>
     </MainLayout>
   )

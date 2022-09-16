@@ -2,10 +2,10 @@ import jwt from 'express-jwt'
 import jwks from 'jwks-rsa'
 
 // TODO: set the domain and audience (API Identifier)
-const domain = 'manaia-2022-jp.au.auth0.com'
+const domain = 'https://manaia-2022-jp.au.auth0.com'
 const audience = 'https://patch/api'
 
-const checkJwt = jwt({
+export const checkJwt = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
     rateLimit: true,
@@ -16,5 +16,3 @@ const checkJwt = jwt({
   issuer: `${domain}/`,
   algorithms: ['RS256'],
 })
-
-export default checkJwt
