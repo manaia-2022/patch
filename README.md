@@ -202,7 +202,6 @@ const fetchFruitsFailure = (error) => ({
 })
 
 const fetchFruits = () => (dispatch) => {
-  dispatch({ type: 'FETCH_FRUITS_REQUEST' })
   dispatch(fetchFruitsRequest())
   getFruits()
     .then((fruits) => {
@@ -270,6 +269,24 @@ async function fetchForbiddenFruits() {
 
 useEffect(() => {
   fetchForbiddenFruits()
+}, [])
+```
+
+### Fetch with Redux and Authentication from Component (.then())
+
+```js
+// Component.jsx
+const dispatch = useDispatch()
+const { data, loading, error } = useSelector((state) => state.fruits)
+
+useEffect(() => {
+  getAccessTokenSilently()
+    .then((token) => {
+      dispatch(fetchForbiddenFruits(token))
+    })
+    .catch((err) => {
+      // this will catch errors with getAccessTokenSilently
+    })
 }, [])
 ```
 

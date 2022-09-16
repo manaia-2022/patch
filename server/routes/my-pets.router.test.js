@@ -1,9 +1,15 @@
 import request from 'supertest'
 import { vi } from 'vitest'
 
+import { checkJwt } from '../auth0'
 import { insertImage, insertPet } from '../db/functions/insertPet.js'
 import createServer from '../server'
 
+vi.mock('../auth0')
+checkJwt.mockImplementation((req, res, next) => {
+  // req.auth.sub = 'auth0|123'
+  next()
+})
 vi.mock('cloudinary', () => ({
   v2: {
     utils: {
@@ -30,11 +36,11 @@ afterAll(() => {
 vi.mock('cloudinary/utils/api_sign_request')
 
 vi.mock('../db/functions/insertPet.js')
-vi.mock(Math)
 vi.spyOn(console, 'log').mockImplementation(() => {
   return
 })
 
+// Skipped due to a bug with checkJwt and Vitest
 describe('POST /api/v1/pets/my', () => {
   const fakePet = {
     name: 'Ace',
@@ -87,12 +93,11 @@ describe('POST /api/v1/pets/my', () => {
 })
 
 describe('POST /api/v1/pets/my/image', () => {
-  it.only('Get response obj from API route', async () => {
+  it('Get response obj from API route', async () => {
     process.env.SECRET_KEY = 'fakeSecret'
     return await request(server)
       .post('/api/v1/pets/my/image')
       .then((response) => {
-        console.warn(response.body)
         expect(response.body.signature).toBe('fakeSignature')
         expect(response.status).toEqual(200)
       })

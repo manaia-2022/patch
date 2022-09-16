@@ -10,8 +10,7 @@ export function addPet(pet, token) {
     })
 }
 
-// const input = { name: 'name.png', type: 'image/png' }
-export async function getImageUrl(image) {
+export async function getImageUrl(image, token) {
   const { name, type } = image
   const fileObject = {
     fileName: name,
@@ -21,6 +20,7 @@ export async function getImageUrl(image) {
   const { signature, timestamp, cloudName, apiKey } = await request
     .post('/api/v1/pets/my/image')
     .send(fileObject)
+    .set('Authorization', `Bearer ${token}`)
     .then((res) => res.body)
 
   const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`

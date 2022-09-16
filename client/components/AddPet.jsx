@@ -1,3 +1,4 @@
+import { useAuth0 } from '@auth0/auth0-react'
 import React, { useState } from 'react'
 
 import { addPet, getImageUrl } from '../apiClient/addPet'
@@ -10,6 +11,7 @@ const initialData = {
 }
 
 export default function AddPet() {
+  const { getAccessTokenSilently } = useAuth0()
   const [form, setForm] = useState(initialData)
   const [selectedFile, setSelectedFile] = useState(null)
 
@@ -26,16 +28,15 @@ export default function AddPet() {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    // const token = await getAccessTokenSilently()
+    const token = await getAccessTokenSilently()
     const image = selectedFile
     try {
-      const imageUrl = await getImageUrl(image) // TODO: pass token
+      const imageUrl = await getImageUrl(image, token) // TODO: pass token
       const pet = {
         ...form,
         imageUrl,
       }
-      console.log('Pet: ', pet)
-      await addPet(pet)
+      await addPet(pet, token)
     } catch (err) {
       console.log(err)
     }

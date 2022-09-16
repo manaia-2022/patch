@@ -1,7 +1,9 @@
+import 'dotenv/config'
+
 import { v2 as cloudinary } from 'cloudinary'
-import * as dotenv from 'dotenv'
 import express from 'express'
-dotenv.config()
+
+import { checkJwt } from '../auth0.js'
 const router = express.Router()
 
 const cloudName = 'dhgfouvnw'
@@ -10,14 +12,11 @@ const apiSecret = process.env.SECRET_KEY
 
 import { insertImage, insertPet } from '../db/functions/insertPet.js'
 
-// TODO: make sure user is signed in before rendering AddPet.jsx // https://auth0.com/docs/libraries/auth0-react#protect-a-route
-// TODO: getAccessTokenSilently() before making addPet request
-// TODO: add checkJwt and add ownerId to db
-router.post('/', (req, res) => {
+router.post('/', checkJwt, (req, res) => {
   const ownerId = req.auth?.sub
   const { name, animal, age, bio, imageUrl } = req.body
-  // ownerId
-  insertPet({ name, animal, age, bio })
+  console.log({ name, animal, age, bio, ownerId })
+  insertPet({ name, animal, age, bio, ownerId })
     .then((result) => {
       const newId = result[0]
       const newImage = {
@@ -35,7 +34,7 @@ router.post('/', (req, res) => {
     })
 })
 
-router.post('/image', (req, res) => {
+router.post('/image', checkJwt, (req, res) => {
   const timestamp = Math.round(new Date().getTime() / 1000)
 
   const signature = cloudinary.utils.api_sign_request(
