@@ -25,7 +25,11 @@ export default function DiscoverRoute() {
   return (
     <>
       <div>
-        {loading ? <div>loading...</div> : <RandomPet pet={randomPet} />}
+        {!error && loading ? (
+          <div>loading...</div>
+        ) : (
+          <RandomPet pet={randomPet} />
+        )}
       </div>
 
       <div>
