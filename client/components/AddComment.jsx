@@ -22,7 +22,6 @@ export default function AddComment(props) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log('submit')
     addComment(form)
       .then((thanks) => {
         setThanks(thanks)
