@@ -23,6 +23,15 @@ export default function Pet(props) {
           <h2 className='flex justify-center p-5 text-2xl font-normal '>
             {pet.bio}
           </h2>
+          <h2 className='flex justify-center p-5 text-2xl font-normal '>
+            Scratch Points: {pet.scratchPoints}
+          </h2>
+          <h2 className='flex justify-center p-5 text-2xl font-normal '>
+            Pat Points: {pet.patchPoints}
+          </h2>
+          <h2 className='flex justify-center p-5 text-2xl font-normal '>
+            Impressions: {pet.impressions}
+          </h2>
         </div>
       </div>
     </body>
