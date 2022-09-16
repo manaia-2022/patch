@@ -2,18 +2,13 @@ import React, { useState } from 'react'
 
 import { addComment } from '../apiClient/comments.api'
 
-// initialise the commit data - tbd what we need
-
 export default function AddComment(props) {
   const initialFormData = {
-    // id - int
     petId: props.pet.id,
     userId: 'auth0|123456789',
     content: '',
-    // updatedAt: '',
   }
 
-  // const [comments, setComments] = useState([])
   const [form, setForm] = useState(initialFormData)
   const [thanks, setThanks] = useState(null)
 

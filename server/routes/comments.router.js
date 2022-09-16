@@ -2,7 +2,6 @@ import express from 'express'
 const router = express.Router()
 import * as db from '../db/functions/comments.db.js'
 
-// POST /api/v1/
 router.post('/', (req, res) => {
   const newCommentData = req.body
   const date = Date.now()
