@@ -1,4 +1,4 @@
-const jwt = require('express-jwt')
+import jwt from 'express-jwt'
 import jwks from 'jwks-rsa'
 
 // TODO: set the domain and audience (API Identifier)
