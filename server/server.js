@@ -28,11 +28,11 @@ export default async function createServer(isDev, hmrPort) {
 
   // user-defined routes and middleware
   server.use(express.urlencoded({ extended: true }))
+  server.use(express.json())
   server.get('/api/hello-world', (req, res) => {
     res.json({ message: 'Hello World' })
   })
 
-  //define petRoute
   server.use('/api/v1/pets/my', petsRoute)
   server.use('/api/v1/pets/random', randomPets)
 

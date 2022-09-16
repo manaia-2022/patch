@@ -6,3 +6,11 @@ export function getMyPets(ownerId, db = connection) {
     .select('pets.*', 'petImages.url as imageUrl')
     .where({ ownerId })
 }
+
+export function insertPet(pet, db = connection) {
+  return db('pets').insert(pet)
+}
+
+export function insertImage({ petId, imageUrl }, db = connection) {
+  return db('petImages').insert({ petId: petId, url: imageUrl })
+}
