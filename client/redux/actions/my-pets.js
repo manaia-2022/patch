@@ -1,7 +1,8 @@
+import { getMyPets } from '../../apiClient/pets.api'
+
 export const FETCH_PETS_REQUEST = 'FETCH_PETS_REQUEST'
 export const FETCH_PETS_SUCCESS = 'FETCH_PETS_SUCCESS'
 export const FETCH_PETS_FAILURE = 'FETCH_PETS_FAILURE'
-import { getMyPets } from '../../apiClient/my-pets.api'
 
 //Simple actions
 export const fetchPetsRequest = () => ({

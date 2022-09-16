@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchPets } from '../../redux/actions/pets.js'
+import { fetchPets } from '../../redux/actions/my-pets.js'
 import Pet from '../Pet.jsx'
 
 export default function MyPets() {
@@ -20,11 +20,11 @@ export default function MyPets() {
     <>
       <div className='justify center flex flex-col'>
         <h1 className='flex justify-center p-10 text-5xl font-black uppercase tracking-wide text-purple-900'>
-          Our Pets
+          Your Pets
         </h1>
         <div className='inline-grid grid-cols-3 grid-rows-1 gap-2'>
-          {pets.map((petObj) => {
-            return <Pet key={petObj.id} pet={petObj} />
+          {pets.map((pet) => {
+            return <Pet key={pet.id} pet={pet} />
           })}
         </div>
       </div>

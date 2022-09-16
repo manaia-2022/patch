@@ -2,7 +2,7 @@ import {
   FETCH_PETS_FAILURE,
   FETCH_PETS_REQUEST,
   FETCH_PETS_SUCCESS,
-} from '../actions/pets'
+} from '../actions/my-pets'
 
 const initialState = {
   data: null,

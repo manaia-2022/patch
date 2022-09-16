@@ -8,7 +8,7 @@ import MainLayout from './components/Layout/MainLayout'
 import MyPets from './components/Layout/MyPets'
 
 function App() {
-  const { getAccessTokenSilently, isAuthenticated } = useAuth0()
+  const { isAuthenticated } = useAuth0()
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -24,7 +24,6 @@ function App() {
 
   return (
     <MainLayout>
-      {/* <MyPets /> */}
       <Routes>
         <Route path='/my-pets' element={<MyPets />} />
         <Route path='/' element={<DiscoverRoute />} />
