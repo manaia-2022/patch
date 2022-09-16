@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 import { createServer as createViteServer } from 'vite'
 
+import commentsRoute from './routes/comments.router.js'
 import randomPets from './routes/randomPets.routes.js'
 
 // use a function to create the server for async/await support
@@ -27,9 +28,12 @@ export default async function createServer(isDev, hmrPort) {
 
   // user-defined routes and middleware
   server.use(express.urlencoded({ extended: true }))
+  server.use(express.json())
   server.get('/api/hello-world', (req, res) => {
     res.json({ message: 'Hello World' })
   })
+
+  server.use('/api/v1/patch', commentsRoute)
 
   server.use('/api/v1/pets/random', randomPets)
 

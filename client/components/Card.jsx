@@ -1,5 +1,7 @@
 import React from 'react'
 
+import AddComment from './AddComment'
+
 export default function Card() {
   let pet = {
     id: 1,
@@ -19,7 +21,7 @@ export default function Card() {
             Discover
           </h1>
         </div>
-        <div className=' item-center m-6 flex flex-col space-y-4 space-x-4 border-4 border-solid border-black text-purple-700'>
+        <div className=' item-center m-6 flex flex-col border-4 border-solid border-black text-purple-700'>
           <div className=' flex justify-center p-8 md:w-auto'>
             <img
               src={pet.imageUrl}
@@ -37,6 +39,7 @@ export default function Card() {
             {pet.bio}
           </h2>
         </div>
+        <AddComment pet={pet} />
       </div>
     </body>
   )
