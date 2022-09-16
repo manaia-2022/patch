@@ -1,37 +1,33 @@
+import { useAuth0 } from '@auth0/auth0-react'
 import React, { useState } from 'react'
 
 import { addComment } from '../apiClient/comments.api'
 
 export default function AddComment(props) {
-  const initialFormData = {
-    petId: props.pet.id,
-    userId: 'auth0|123456789',
-    content: '',
-  }
+  const { getAccessTokenSilently } = useAuth0()
 
-  const [form, setForm] = useState(initialFormData)
-  const [thanks, setThanks] = useState(null)
+  const [comment, setComment] = useState('')
+  const [thanks, setThanks] = useState('')
+
+  console.log(thanks)
+
+  const isDisabled = thanks.length > 0 || comment.length === 0
 
   function handleChange(event) {
-    const newForm = {
-      ...form,
-      [event.target.name]: event.target.value,
-    }
-    setForm(newForm)
+    setComment(event.target.value)
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
-    console.log('submit')
-    // TODO add authentication
-    addComment(form)
-      .then((thanks) => {
-        setThanks(thanks)
-      })
-      .catch((err) => {
-        console.error(err.message)
-      })
-    setForm(initialFormData)
+    try {
+      const token = await getAccessTokenSilently()
+      await addComment({ content: comment, petId: props.pet.id }, token)
+      setThanks('Thanks for your comment!')
+    } catch (err) {
+      console.log(err.message)
+    } finally {
+      setComment('')
+    }
   }
 
   return (
@@ -50,19 +46,20 @@ export default function AddComment(props) {
               id='content'
               name='content'
               onChange={handleChange}
-              value={form.content}
+              value={comment}
             ></input>
           </div>
           <div className='flex justify-center p-10'>
             <button
-              className='rounded-full bg-purple-700 p-10 py-2 px-4 pl-4 font-bold text-white  hover:bg-pink-700'
+              className='rounded-full bg-purple-700 p-10 py-2 px-4 pl-4 font-bold text-purple-200  hover:bg-pink-700 disabled:bg-purple-200 disabled:text-purple-300'
               type='submit'
+              disabled={isDisabled}
             >
               Add Comment
             </button>
           </div>
           <div className='flex justify-center text-2xl font-normal'>
-            {thanks && <p>{thanks}</p>}
+            {thanks.length > 0 && <p>{thanks}</p>}
           </div>
         </form>
       </div>

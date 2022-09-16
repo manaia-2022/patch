@@ -12,8 +12,14 @@ const apiSecret = process.env.SECRET_KEY
 
 import * as db from '../db/functions/my-pets.db.js'
 
-router.get('/', (req, res) => {
-  const ownerId = 'auth0|123456789'
+router.get('/', checkJwt, (req, res) => {
+  const ownerId = req.user?.sub
+
+  if (!ownerId) {
+    res.status(401).send('Unauthorized')
+    return
+  }
+
   db.getMyPets(ownerId)
     .then((pets) => {
       res.json(pets)
@@ -25,7 +31,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', checkJwt, (req, res) => {
-  const ownerId = req.auth?.sub
+  const ownerId = req.user?.sub
   const { name, animal, age, bio, imageUrl } = req.body
   console.log({ name, animal, age, bio, ownerId })
   db.insertPet({ name, animal, age, bio, ownerId })

@@ -22,10 +22,10 @@ afterAll(async () => {
 // https://vitest.dev/config/
 describe('addComment', () => {
   it('add a new comment to the pet', () => {
-    const testComment = { petId: 2, userId: 'Sarah', content: 'Testing' }
+    const testComment = { petId: 2, authorId: 'Sarah', content: 'Testing' }
     return addComment(testComment, testCon).then((data) => {
       expect(data.petId).toBe(2)
-      expect(data.userId).toBe('Sarah')
+      expect(data.authorId).toBe('Sarah')
       expect(data.content).toBe('Testing')
       expect(data.createdAt).toBeUndefined()
       expect(data.updatedAt).toBeUndefined()

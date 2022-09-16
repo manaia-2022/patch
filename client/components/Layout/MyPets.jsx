@@ -1,15 +1,23 @@
+import { useAuth0 } from '@auth0/auth0-react'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchPets } from '../../redux/actions/my-pets.js'
+import { fetchPets, fetchPetsFailure } from '../../redux/actions/my-pets.js'
 import Pet from '../Pet.jsx'
 
 export default function MyPets() {
   const dispatch = useDispatch()
   const { data: pets, loading, error } = useSelector((state) => state.myPets)
+  const { getAccessTokenSilently } = useAuth0()
 
   useEffect(() => {
-    dispatch(fetchPets())
+    getAccessTokenSilently()
+      .then((token) => {
+        dispatch(fetchPets(token))
+      })
+      .catch(() => {
+        dispatch(fetchPetsFailure('Are you sure you are signed in?'))
+      })
   }, [])
 
   return loading ? (

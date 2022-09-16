@@ -10,7 +10,7 @@ export const seed = async (knex) => {
   await knex('pets').insert([
     {
       id: 1,
-      ownerId: 'auth0|123456789',
+      ownerId: 'auth0|632118abb4bc26420db32e36',
       name: 'Bella',
       age: 2,
       animal: 'dog',
@@ -23,7 +23,7 @@ export const seed = async (knex) => {
     },
     {
       id: 2,
-      ownerId: 'auth0|123456789',
+      ownerId: 'auth0|632118abb4bc26420db32e36',
       name: 'Scout',
       age: 1,
       animal: 'cat',
@@ -36,7 +36,7 @@ export const seed = async (knex) => {
     },
     {
       id: 3,
-      ownerId: 'auth0|123456789',
+      ownerId: 'auth0|632118abb4bc26420db32e36',
       name: 'Hugo',
       age: 1,
       animal: 'cat',
@@ -49,7 +49,7 @@ export const seed = async (knex) => {
     },
     {
       id: 4,
-      ownerId: 'auth0|123456789',
+      ownerId: 'auth0|632118abb4bc26420db32e36',
       name: 'Brazen',
       age: 2,
       animal: 'cat',
@@ -62,7 +62,7 @@ export const seed = async (knex) => {
     },
     {
       id: 5,
-      ownerId: 'auth0|123456789',
+      ownerId: 'auth0|632118abb4bc26420db32e36',
       name: 'Frankie',
       age: 7,
       animal: 'dog',

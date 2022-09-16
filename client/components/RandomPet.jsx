@@ -16,7 +16,7 @@ export default function RandomPet({ pet }) {
         <div className='item-center m-6 flex flex-col border-4 border-solid border-black text-purple-700'>
           <div className=' flex justify-center p-8 md:w-auto'>
             <img
-              className='border-p-600 h-64 w-64 rounded-full border-4 border-solid border-black '
+              className='border-p-600 h-64 w-64 rounded-full border-4 border-solid border-black object-cover'
               src={pet.imageUrl}
               alt='animal'
             />
@@ -34,7 +34,6 @@ export default function RandomPet({ pet }) {
         <Voting petId={pet.id} />
         <AddComment pet={pet} />
       </div>
-      <AddComment pet={pet} />
     </div>
   )
 }

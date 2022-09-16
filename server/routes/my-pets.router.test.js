@@ -15,6 +15,8 @@ afterAll(() => {
   vi.useRealTimers()
 })
 
+const FAKE_USER_ID = 'auth0|123456789'
+
 vi.mock('cloudinary/utils/api_sign_request')
 vi.mock('../db/functions/my-pets.db.js')
 vi.spyOn(console, 'log').mockImplementation(() => {
@@ -23,8 +25,8 @@ vi.spyOn(console, 'log').mockImplementation(() => {
 vi.mock('../auth0')
 checkJwt.mockImplementation((req, res, next) => {
   // TODO: fix me
-  // req.auth.sub = 'auth0|123'
-  next()
+  req.user = { sub: FAKE_USER_ID }
+  return next()
 })
 vi.mock('cloudinary', () => ({
   v2: {
@@ -45,7 +47,7 @@ describe('GET /api/v1/pets/my', () => {
       Promise.resolve([
         {
           id: 1,
-          ownerId: 'auth0|123456789',
+          ownerId: FAKE_USER_ID,
           name: 'Bella',
           age: 6,
           animal: 'dog',
@@ -58,7 +60,7 @@ describe('GET /api/v1/pets/my', () => {
         },
         {
           id: 2,
-          ownerId: 'auth0|123456789',
+          ownerId: FAKE_USER_ID,
           name: 'Mable',
           age: 5,
           animal: 'cat',
@@ -145,6 +147,7 @@ describe('POST /api/v1/pets/my', () => {
           animal: 'T-Rex',
           age: 12,
           bio: `It's made up`,
+          ownerId: FAKE_USER_ID,
         })
       })
   })

@@ -10,7 +10,7 @@ export default function Pet(props) {
           <img
             src={pet.imageUrl}
             alt='animal'
-            className='border-p-600 h-48 w-48 rounded-full border-4 border-solid border-black '
+            className='border-p-600 h-48 w-48 rounded-full border-4 border-solid border-black object-cover'
           />
         </div>
         <h2 className='flex justify-center text-2xl font-black uppercase tracking-wide text-purple-900'>

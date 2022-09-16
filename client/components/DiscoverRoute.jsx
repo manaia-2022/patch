@@ -13,11 +13,6 @@ export default function DiscoverRoute() {
   } = useSelector((state) => state.randomPet)
   const dispatch = useDispatch()
 
-  function handleClick(e) {
-    e.preventDefault()
-    dispatch(fetchRandomPet())
-  }
-
   useEffect(() => {
     dispatch(fetchRandomPet())
   }, [])
@@ -30,10 +25,6 @@ export default function DiscoverRoute() {
     <>
       <div>
         {loading ? <div>loading...</div> : <RandomPet pet={randomPet} />}
-      </div>
-
-      <div>
-        <button onClick={handleClick}>Get the Pet</button>
       </div>
     </>
   )
