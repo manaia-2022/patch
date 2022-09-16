@@ -22,6 +22,10 @@ export default function DiscoverRoute() {
     dispatch(fetchRandomPet())
   }, [])
 
+  if (error) {
+    return <div>{'Ooops! Something has happened, please try again later.'}</div>
+  }
+
   return (
     <>
       <div>

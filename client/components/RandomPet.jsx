@@ -1,7 +1,7 @@
 import React from 'react'
 
 import AddComment from './AddComment'
-
+import Voting from './Voting'
 // TODO add authentication to conditionally render AddComment
 
 export default function RandomPet({ pet }) {
@@ -13,7 +13,7 @@ export default function RandomPet({ pet }) {
             Discover
           </h1>
         </div>
-        <div className=' item-center m-6 flex flex-col border-4 border-solid border-black text-purple-700'>
+        <div className='item-center m-6 flex flex-col border-4 border-solid border-black text-purple-700'>
           <div className=' flex justify-center p-8 md:w-auto'>
             <img
               className='border-p-600 h-64 w-64 rounded-full border-4 border-solid border-black '
@@ -31,8 +31,10 @@ export default function RandomPet({ pet }) {
             {pet.bio}
           </h2>
         </div>
+        <Voting petId={pet.id} />
         <AddComment pet={pet} />
       </div>
+      <AddComment pet={pet} />
     </div>
   )
 }

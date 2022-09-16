@@ -65,7 +65,7 @@ function Nav() {
                   </li>
                 </>
               ) : (
-                <li className='absolute right-5 block rounded py-2 pr-4 pl-3 text-gray-700 text-gray-400 hover:bg-green-700 hover:text-white  md:border-2 md:border-purple-900 md:bg-purple-900 md:p-2 md:text-white md:hover:text-white md:hover:text-white'>
+                <li className='absolute right-5 block rounded py-2 pr-4 pl-3 text-gray-700 hover:bg-green-700 hover:text-white  md:border-2 md:border-purple-900 md:bg-purple-900 md:p-2 md:text-white md:hover:text-white'>
                   <button onClick={handleSignIn}>Sign In</button>
                 </li>
               )}
