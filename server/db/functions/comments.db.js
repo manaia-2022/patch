@@ -8,7 +8,7 @@ import connection from '../connection.js'
 export function addComment(content, db = connection) {
   return db('petComments')
     .insert(content)
-    .then(([petId]) => {
-      return { petId, content }
+    .then(([id]) => {
+      return { id, ...content }
     })
 }
