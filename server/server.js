@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 import { createServer as createViteServer } from 'vite'
 
+import commentsRoute from './routes/comments.router.js'
 import petsRoute from './routes/my-pets.router.js'
 import randomPets from './routes/randomPets.routes.js'
 
@@ -34,6 +35,7 @@ export default async function createServer(isDev, hmrPort) {
   })
 
   server.use('/api/v1/pets/my', petsRoute)
+  server.use('/api/v1/comments', commentsRoute)
   server.use('/api/v1/pets/random', randomPets)
 
   // use a 404 route to ensure you get good error messages when you miss api routes
