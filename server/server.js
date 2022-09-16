@@ -3,6 +3,7 @@ import path from 'path'
 import { createServer as createViteServer } from 'vite'
 
 import randomPets from './routes/randomPets.routes.js'
+import voting from './routes/voting.router.js'
 
 // use a function to create the server for async/await support
 export default async function createServer(isDev, hmrPort) {
@@ -32,6 +33,7 @@ export default async function createServer(isDev, hmrPort) {
   })
 
   server.use('/api/v1/pets/random', randomPets)
+  server.use('/api/v1/pets/votes', voting)
 
   // use a 404 route to ensure you get good error messages when you miss api routes
   server.use('/api/*', (req, res) => {
