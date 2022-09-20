@@ -1,9 +1,9 @@
 import knex from 'knex'
 
-import config from '../knexfile.js'
+import config from '../../knexfile.js'
 const testDb = knex(config.test)
 
-import * as db from './my-pets.db.js'
+import * as db from '../my-pets.db.js'
 
 beforeAll(async () => {
   await testDb.migrate.latest()

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { fetchPets, fetchPetsFailure } from '../../redux/actions/my-pets.js'
 import Pet from '../Pet.jsx'
 
-function MyPets() {
+function MyPetsRoute() {
   const dispatch = useDispatch()
   const { data: pets, loading, error } = useSelector((state) => state.myPets)
   const { getAccessTokenSilently } = useAuth0()
@@ -47,6 +47,6 @@ function MyPets() {
   )
 }
 
-export default withAuthenticationRequired(MyPets, {
+export default withAuthenticationRequired(MyPetsRoute, {
   onRedirecting: () => <div>Redirecting you to the login page...</div>,
 })

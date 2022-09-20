@@ -13,7 +13,7 @@ export default function RandomPet({ pet }) {
             Discover
           </h1>
         </div>
-        <div className='item-center m-6 flex flex-col border-4 border-solid border-black text-purple-700'>
+        <div className='item-center m-6 flex max-w-lg flex-col border-4 border-solid border-black text-purple-700'>
           <div className=' flex justify-center p-8 md:w-auto'>
             <img
               className='border-p-600 h-64 w-64 rounded-full border-4 border-solid border-black object-cover'
@@ -21,7 +21,7 @@ export default function RandomPet({ pet }) {
               alt='animal'
             />
           </div>
-          <h2 className='flex justify-center text-3xl font-black uppercase tracking-wide text-purple-900'>
+          <h2 className='flex justify-center text-3xl font-black uppercase tracking-wide text-purple-800'>
             {pet.name} the {pet.animal}
           </h2>
           <h2 className='text-1xl flex justify-center font-normal'>

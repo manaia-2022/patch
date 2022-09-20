@@ -4,13 +4,13 @@ import { v2 as cloudinary } from 'cloudinary'
 import express from 'express'
 
 import { checkJwt } from '../auth0.js'
-const router = express.Router()
+import * as db from '../db/functions/my-pets.db.js'
 
 const cloudName = 'rohan-aihe'
 const apiKey = '516514146324499'
 const apiSecret = process.env.SECRET_KEY
 
-import * as db from '../db/functions/my-pets.db.js'
+const router = express.Router()
 
 router.get('/', checkJwt, (req, res) => {
   const ownerId = req.user?.sub
@@ -33,7 +33,7 @@ router.get('/', checkJwt, (req, res) => {
 router.post('/', checkJwt, (req, res) => {
   const ownerId = req.user?.sub
   const { name, animal, age, bio, imageUrl } = req.body
-  console.log({ name, animal, age, bio, ownerId })
+
   db.insertPet({ name, animal, age, bio, ownerId })
     .then((result) => {
       const newId = result[0]
@@ -53,6 +53,7 @@ router.post('/', checkJwt, (req, res) => {
 })
 
 router.post('/image', checkJwt, (req, res) => {
+  // 32147812897523
   const timestamp = Math.round(new Date().getTime() / 1000)
 
   const signature = cloudinary.utils.api_sign_request(

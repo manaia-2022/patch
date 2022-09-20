@@ -31,7 +31,7 @@ export default function Voting({ petId }) {
         <button onClick={retry}>Retry</button>
       </li>
       <li className='w-28 rounded-full border-4 border-green-900 bg-green-300 p-2 text-center text-lg text-green-900 hover:border-green-400 hover:bg-green-900 hover:text-green-400'>
-        <button onClick={patch}>Pat</button>
+        <button onClick={patch}>Patch</button>
       </li>
     </ul>
   )

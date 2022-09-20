@@ -1,10 +1,10 @@
 import knex from 'knex'
 import { afterAll, beforeAll, beforeEach, describe } from 'vitest'
 
-import config from '../knexfile.js'
+import config from '../../knexfile.js'
 const testCon = knex(config.test)
 
-import { addComment } from './comments.db.js'
+import { addComment } from '../comments.db.js'
 
 beforeAll(async () => {
   await testCon.migrate.latest()

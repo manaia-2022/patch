@@ -1,7 +1,6 @@
 import jwt from 'express-jwt'
 import jwks from 'jwks-rsa'
 
-// TODO: set the domain and audience (API Identifier)
 const domain = 'https://manaia-2022-jp.au.auth0.com'
 const audience = 'https://patch/api'
 
