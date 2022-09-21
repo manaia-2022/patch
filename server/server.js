@@ -1,54 +1,46 @@
 import express from 'express'
 import path from 'path'
-import { createServer as createViteServer } from 'vite'
+import { fileURLToPath } from 'url'
 
 import commentsRoute from './routes/comments.router.js'
 import petsRoute from './routes/my-pets.router.js'
 import randomPets from './routes/randomPets.router.js'
 import voting from './routes/voting.router.js'
 
-export default async function createServer(isDev, hmrPort) {
-  const server = express()
+const isDev =
+  process.env.NODE_ENV === undefined || process.env.NODE_ENV === 'development'
 
-  let vite
-  if (isDev) {
-    vite = await createViteServer({
-      root: process.cwd(),
-      server: {
-        middlewareMode: true,
-        hmr: {
-          port: hmrPort,
-        },
-      },
-    })
-  } else {
-    server.use(express.static('dist'))
-  }
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-  server.use(express.urlencoded({ extended: true }))
-  server.use(express.json())
-  server.get('/api/hello-world', (req, res) => {
-    res.json({ message: 'Hello World' })
-  })
+const server = express()
 
-  server.use('/api/v1/pets/my', petsRoute)
-  server.use('/api/v1/comments', commentsRoute)
-  server.use('/api/v1/pets/random', randomPets)
-  server.use('/api/v1/pets/votes', voting)
-
-  server.use('/api/*', (req, res) => {
-    res.sendStatus(404)
-  })
-
-  if (isDev) {
-    server.use(vite.middlewares)
-  } else {
-    server.use('*', (req, res) => {
-      res.sendFile(path.resolve('dist/index.html'))
-    })
-  }
-
-  return server
+server.use(express.json())
+server.use(express.urlencoded({ extended: true }))
+if (!isDev) {
+  server.use(express.static(path.join(__dirname, 'dist')))
 }
 
 // module.exports = server
+server.get('/api/hello-world', (req, res) => {
+  res.json({ message: 'Hello World' })
+})
+
+server.use('/api/v1/pets/my', petsRoute)
+server.use('/api/v1/comments', commentsRoute)
+server.use('/api/v1/pets/random', randomPets)
+server.use('/api/v1/pets/votes', voting)
+
+server.use('/api/*', (req, res) => {
+  res.sendStatus(404)
+})
+
+server.use('*', (req, res) => {
+  if (isDev) {
+    res
+      .status(404)
+      .send('Not found: server is running in dev mode, use port 3000')
+  }
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
+
+export default server

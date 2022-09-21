@@ -1,11 +1,6 @@
 import request from 'supertest'
 
-import createServer from '../../server'
-
-let server
-beforeAll(async () => {
-  server = await createServer()
-})
+import server from '../../server'
 
 describe('GET /api/v1/hello-world', () => {
   it('works', () => {

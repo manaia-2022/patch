@@ -2,12 +2,7 @@ import request from 'supertest'
 import { vi } from 'vitest'
 
 import * as db from '../../db/functions/randomPets.db.js'
-import createServer from '../../server'
-
-let server
-beforeAll(async () => {
-  server = await createServer()
-})
+import server from '../../server'
 
 vi.mock('../../db/functions/randomPets.db.js')
 

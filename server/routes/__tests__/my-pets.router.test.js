@@ -3,7 +3,7 @@ import { vi } from 'vitest'
 
 import { checkJwt } from '../../auth0'
 import * as db from '../../db/functions/my-pets.db.js'
-import createServer from '../../server'
+import server from '../../server'
 
 beforeAll(() => {
   const date = new Date(2022, 9, 16)
@@ -35,11 +35,6 @@ vi.mock('cloudinary', () => ({
     },
   },
 }))
-
-let server
-beforeAll(async () => {
-  server = await createServer()
-})
 
 describe('GET /api/v1/pets/my', () => {
   it('returns an array of pet objects', () => {
