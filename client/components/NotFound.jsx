@@ -2,22 +2,23 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import { getGiph } from '../apiClient/giphy.api'
+import loadingGif from '../images/cat_loading.gif'
 
 export default function NotFound() {
-  const [giph, setGiph] = useState(null)
+  const [giph, setGiph] = useState({ embed_url: loadingGif, title: 'loading' })
   const location = useLocation().pathname
   console.log(location)
 
   useEffect(() => {
-    getGiph(location).then((imageUrl) => setGiph(imageUrl))
+    getGiph(location).then((giph) => setGiph(giph))
   }, [])
 
   return (
     <div className='m-0 text-lg'>
       <div className='w-full'>
-        <p className='m-5 text-center text-9xl font-bold text-violet-300 '>
+        <h1 className='m-5 text-center text-9xl font-bold text-violet-300 '>
           404
-        </p>
+        </h1>
       </div>
       <div className='flex flex-wrap content-center justify-center '>
         <div className='m-5 max-w-sm'>
@@ -45,14 +46,14 @@ export default function NotFound() {
             to find your new best friend.
           </p>
         </div>
+
         <iframe
-          src={giph}
+          src={giph?.embed_url}
           width='400'
           height='400'
           frameBorder='0'
-          className='giphy-embed'
           allowFullScreen={false}
-          title='cute animal giph'
+          title={giph?.title}
         ></iframe>
       </div>
     </div>
