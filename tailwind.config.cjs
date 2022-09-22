@@ -6,5 +6,3 @@ module.exports = {
   },
   plugins: [require('prettier-plugin-tailwindcss')],
 }
-
-// Ask Ash about adding themes to this config file

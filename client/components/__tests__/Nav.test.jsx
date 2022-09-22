@@ -5,7 +5,7 @@ import React from 'react'
 import { MemoryRouter as Router } from 'react-router-dom'
 import { vi } from 'vitest'
 
-import Nav from './Nav'
+import Nav from '../Nav'
 
 vi.mock('@auth0/auth0-react')
 

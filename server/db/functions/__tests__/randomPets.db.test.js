@@ -1,10 +1,10 @@
 import knex from 'knex'
 import { beforeAll, describe } from 'vitest'
 
-import config from '../knexfile.js'
+import config from '../../knexfile.js'
 const testDb = knex(config.test)
 
-import { getRandomPets } from './randomPets.db.js'
+import { getRandomPets } from '../randomPets.db.js'
 
 beforeAll(async () => {
   await testDb.migrate.latest()

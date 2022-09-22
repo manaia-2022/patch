@@ -1,6 +1,6 @@
 import nock from 'nock'
 
-import { addPet } from './addPet.js'
+import { addPet } from '../addPet.js'
 
 describe('addPet', () => {
   it('returns data from api', () => {

@@ -1,15 +1,15 @@
 import request from 'supertest'
 import { vi } from 'vitest'
 
-import * as db from '../db/functions/randomPets.db.js'
-import createServer from '../server'
+import * as db from '../../db/functions/randomPets.db.js'
+import createServer from '../../server'
 
 let server
 beforeAll(async () => {
   server = await createServer()
 })
 
-vi.mock('../db/functions/randomPets.db.js')
+vi.mock('../../db/functions/randomPets.db.js')
 
 describe('GET /api/v1/pets/random', () => {
   it('returns random pet', () => {

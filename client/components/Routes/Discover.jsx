@@ -2,8 +2,8 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchRandomPet } from '../redux/actions/random-pet'
-import RandomPet from './RandomPet'
+import { fetchRandomPet } from '../../redux/actions/random-pet'
+import RandomPet from '../RandomPet'
 
 export default function DiscoverRoute() {
   const {

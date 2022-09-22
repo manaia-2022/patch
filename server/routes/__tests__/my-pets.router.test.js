@@ -1,9 +1,9 @@
 import request from 'supertest'
 import { vi } from 'vitest'
 
-import { checkJwt } from '../auth0'
-import * as db from '../db/functions/my-pets.db.js'
-import createServer from '../server'
+import { checkJwt } from '../../auth0'
+import * as db from '../../db/functions/my-pets.db.js'
+import createServer from '../../server'
 
 beforeAll(() => {
   const date = new Date(2022, 9, 16)
@@ -18,11 +18,11 @@ afterAll(() => {
 const FAKE_USER_ID = 'auth0|123456789'
 
 vi.mock('cloudinary/utils/api_sign_request')
-vi.mock('../db/functions/my-pets.db.js')
+vi.mock('../../db/functions/my-pets.db.js')
 vi.spyOn(console, 'log').mockImplementation(() => {
   return
 })
-vi.mock('../auth0')
+vi.mock('../../auth0')
 checkJwt.mockImplementation((req, res, next) => {
   // TODO: fix me
   req.user = { sub: FAKE_USER_ID }

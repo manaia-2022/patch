@@ -1,18 +1,18 @@
 import { Route, Routes } from 'react-router-dom'
 
-import AddPet from './components/AddPet'
-import DiscoverRoute from './components/DiscoverRoute'
 import MainLayout from './components/Layout/MainLayout'
-import MyPets from './components/Layout/MyPets'
-import NotFound from './components/NotFound'
+import AddPetRoute from './components/Routes/AddPet'
+import DiscoverRoute from './components/Routes/Discover'
+import MyPetsRoute from './components/Routes/MyPets'
+import NotFound from './components/Routes/NotFound'
 
 function App() {
   return (
     <MainLayout>
       <Routes>
-        <Route path='/my-pets' element={<MyPets />} />
         <Route path='/' element={<DiscoverRoute />} />
-        <Route path='/my-pets/add' element={<AddPet />} />
+        <Route path='/my-pets' element={<MyPetsRoute />} />
+        <Route path='/my-pets/add' element={<AddPetRoute />} />
         <Route path='/*' element={<NotFound />} />
       </Routes>
     </MainLayout>

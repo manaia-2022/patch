@@ -3,10 +3,10 @@ import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { vi } from 'vitest'
 
-import { getGiph } from '../apiClient/giphy.api'
-import NotFound from './NotFound'
+import { getGiph } from '../../apiClient/giphy.api'
+import NotFound from '../Routes/NotFound'
 
-vi.mock('../apiClient/giphy.api')
+vi.mock('../../apiClient/giphy.api')
 
 describe('<NotFound />', () => {
   afterEach(() => {

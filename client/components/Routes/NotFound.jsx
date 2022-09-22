@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { getGiph } from '../apiClient/giphy.api'
-import loadingGif from '../images/cat_loading.gif'
+import { getGiph } from '../../apiClient/giphy.api'
+import loadingGif from '../../images/animated-circle.gif'
 
 export default function NotFound() {
   const [giph, setGiph] = useState({ embed_url: loadingGif, title: 'loading' })

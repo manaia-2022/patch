@@ -1,6 +1,6 @@
 import nock from 'nock'
 
-import { getGiph } from './giphy.api'
+import { getGiph } from '../giphy.api'
 
 describe('getGiph', () => {
   it('returns a giph object based on a url', () => {

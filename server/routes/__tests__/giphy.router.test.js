@@ -2,7 +2,7 @@ import nock from 'nock'
 import request from 'supertest'
 import { vi } from 'vitest'
 
-import createServer from '../server'
+import createServer from '../../server'
 
 let server
 beforeAll(async () => {
