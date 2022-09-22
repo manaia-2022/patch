@@ -5,9 +5,10 @@ import request from 'superagent'
 
 const router = express.Router()
 
+// GET /api/v1/giphy?url='queryString'
 router.get('/', (req, res) => {
   const apiKey = process.env.GIPHY_API_KEY
-  const url = req.query.url ?? 'bob'
+  const url = req.query.url ?? 'mouse' // <-- nullish coallescing
   const arrLimit = 25
 
   const toAsciiSum = (string) => {
@@ -18,7 +19,7 @@ router.get('/', (req, res) => {
 
   const getHashIdxFromString = (string, max) => {
     const hash = toAsciiSum(string)
-    return hash % max // 24 / 25 -> 24    25 / 25 === 1 -> 0   26 / 25 -> 1
+    return hash % max
   }
   const idx = getHashIdxFromString(url, arrLimit)
 
@@ -29,12 +30,10 @@ router.get('/', (req, res) => {
     .then((response) => {
       const [giph] = response.body.data
       const { embed_url, title } = giph
-      // console.log(giphArr)
       res.json({ embed_url, title })
-      // return res.json({ embed_url, title })
     })
     .catch((err) => {
-      console.log(err)
+      console.error(err.message)
       res.status(500).json({ message: 'Giphy API Error' })
     })
 })
