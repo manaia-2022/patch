@@ -23,6 +23,8 @@ describe('<NotFound />', () => {
 
     render(<NotFound />, { wrapper: MemoryRouter })
 
+    expect.assertions(3)
+
     await screen.findByTitle(/cute/i)
     const header = screen.getByRole('heading')
     const giphFrame = screen.getByTitle(/cute/i).outerHTML
