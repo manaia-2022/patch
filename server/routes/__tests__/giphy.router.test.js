@@ -56,6 +56,7 @@ describe('GET /api/v1/giphy?url="queryString"', () => {
         expect(res.status).toBe(500)
         expect(console.error).toHaveBeenCalledWith('Nope')
         expect(res.body.message).toBe('Giphy API Error')
+        console.error.mockRestore()
         scope.done()
       })
   })

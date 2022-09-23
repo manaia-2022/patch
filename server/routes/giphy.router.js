@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 
   return request
     .get(
-      `http://api.giphy.com/v1/gifs/search?q=adorable+cats+and+dogs+real+life&api_key=${apiKey}&limit=${1}&offset=${idx}`
+      `http://api.giphy.com/v1/gifs/search?q=adorable+cats+and+dogs+real+life&api_key=${apiKey}&limit=${1}&offset=${idx}&rating=g&lang=en`
     )
     .then((response) => {
       const [giph] = response.body.data
