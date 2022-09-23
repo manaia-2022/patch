@@ -18,6 +18,18 @@ describe('<NotFound />', () => {
     title: 'cute pic',
   }
 
+  it('shows a loading giph when fetching the API giph', async () => {
+    getGiph.mockReturnValue(Promise.resolve(giphObj))
+
+    render(<NotFound />, { wrapper: MemoryRouter })
+
+    expect.assertions(2)
+
+    expect(screen.getByTitle(/loading/i)).toBeInTheDocument()
+    await screen.findByTitle(/cute/i)
+    expect(screen.queryByTitle(/loading/i)).not.toBeInTheDocument()
+  })
+
   it('renders a 404 page with giph', async () => {
     getGiph.mockReturnValue(Promise.resolve(giphObj))
 

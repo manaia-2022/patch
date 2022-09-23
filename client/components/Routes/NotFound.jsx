@@ -6,10 +6,10 @@ import loadingGif from '../../images/cat_loading.gif'
 
 export default function NotFound() {
   const [giph, setGiph] = useState({ embed_url: loadingGif, title: 'loading' })
-  const location = useLocation().pathname
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    getGiph(location).then((giph) => setGiph(giph))
+    getGiph(pathname).then((giph) => setGiph(giph))
   }, [])
 
   return (
