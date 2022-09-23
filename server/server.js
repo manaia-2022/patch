@@ -3,6 +3,7 @@ import path from 'path'
 import { createServer as createViteServer } from 'vite'
 
 import commentsRoute from './routes/comments.router.js'
+import giphy from './routes/giphy.router.js'
 import petsRoute from './routes/my-pets.router.js'
 import randomPets from './routes/randomPets.router.js'
 import voting from './routes/voting.router.js'
@@ -35,6 +36,7 @@ export default async function createServer(isDev, hmrPort) {
   server.use('/api/v1/comments', commentsRoute)
   server.use('/api/v1/pets/random', randomPets)
   server.use('/api/v1/pets/votes', voting)
+  server.use('/api/v1/giphy', giphy)
 
   server.use('/api/*', (req, res) => {
     res.sendStatus(404)
