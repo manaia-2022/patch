@@ -1,6 +1,6 @@
 import request from 'supertest'
 
-import createServer from './server'
+import createServer from '../../server'
 
 let server
 beforeAll(async () => {
